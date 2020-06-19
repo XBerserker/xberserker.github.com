@@ -1,0 +1,876 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="renderer" content="webkit"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/blog-avator.jpg?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/blog-avator.jpg?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="description" content="本篇记录了一些和MathJax相关的东西，以及数学公式书写的规则还有一些常用的希腊字母">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MathJax相关">
+<meta property="og:url" content="http://tech.noexception.cn/2016/11/05/MathJax%E7%9B%B8%E5%85%B3-md/index.html">
+<meta property="og:site_name" content="Notes ❤ Ultimate">
+<meta property="og:description" content="本篇记录了一些和MathJax相关的东西，以及数学公式书写的规则还有一些常用的希腊字母">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-11-05T07:14:41.000Z">
+<meta property="article:modified_time" content="2020-05-26T02:44:28.167Z">
+<meta property="article:author" content="希川">
+<meta property="article:tag" content="MathJax">
+<meta name="twitter:card" content="summary"><meta name="keywords" content="希川, Notes ❤ Ultimate"><meta name="description" content="格物致知"><title>MathJax相关 | Notes ❤ Ultimate</title><link ref="canonical" href="http://tech.noexception.cn/2016/11/05/MathJax%E7%9B%B8%E5%85%B3-md/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-male"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Notes ❤ Ultimate</div><div class="header-banner-info__subtitle">格物致知</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">MathJax相关</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2016-11-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-26</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">10分</span></span></div></header><div class="post-body"><p>本篇记录了一些和MathJax相关的东西，以及数学公式书写的规则还有一些常用的希腊字母</p>
+
+<a id="more"></a>
+
+        <h3 id="希腊字母"   >
+          <a href="#希腊字母" class="heading-link"><i class="fas fa-link"></i></a>希腊字母</h3>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>字母名称</th>
+<th>大写</th>
+<th>Markdown原文</th>
+<th>小写</th>
+<th>Markdown原文  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td>$A$</td>
+<td><code>A</code></td>
+<td>$\alpha$</td>
+<td><code>\alpha</code>  </td>
+</tr>
+<tr>
+<td>beta</td>
+<td>$B$</td>
+<td><code>B</code></td>
+<td>$\beta$</td>
+<td><code>\beta</code></td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>$\Gamma$</td>
+<td><code>\Gamma</code></td>
+<td>$\gamma$</td>
+<td><code>\gamma</code>  </td>
+</tr>
+<tr>
+<td>delta</td>
+<td>$\Delta$</td>
+<td><code>\Delta</code></td>
+<td>$\delta$</td>
+<td><code>\delta</code></td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td>$E$</td>
+<td><code>E</code></td>
+<td>$\epsilon$</td>
+<td><code>\epsilon</code>   </td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>$\varepsilon$</td>
+<td><code>\varepsilon</code>  </td>
+</tr>
+<tr>
+<td>zeta</td>
+<td>$Z$</td>
+<td><code>Z</code></td>
+<td>$\zeta$</td>
+<td><code>\zeta</code>  </td>
+</tr>
+<tr>
+<td>eta</td>
+<td>$H$</td>
+<td><code>H</code></td>
+<td>$\eta$</td>
+<td><code>\eta</code></td>
+</tr>
+<tr>
+<td>theta</td>
+<td>$\Theta$</td>
+<td><code>\Theta</code></td>
+<td>$\theta$</td>
+<td><code>\theta</code>  </td>
+</tr>
+<tr>
+<td>iota</td>
+<td>$I$</td>
+<td><code>I</code></td>
+<td>$\iota$</td>
+<td><code>\iota</code>  </td>
+</tr>
+<tr>
+<td>kappa</td>
+<td>$K$</td>
+<td><code>K</code></td>
+<td>$\kappa$</td>
+<td><code>\kappa</code>  </td>
+</tr>
+<tr>
+<td>lambda</td>
+<td>$\Lambda$</td>
+<td><code>\Lambda</code></td>
+<td>$\lambda$</td>
+<td><code>\lambda</code></td>
+</tr>
+<tr>
+<td>mu</td>
+<td>$M$</td>
+<td><code>M</code></td>
+<td>$\mu$</td>
+<td><code>\mu</code>  </td>
+</tr>
+<tr>
+<td>nu</td>
+<td>$N$</td>
+<td><code>N</code></td>
+<td>$\nu$</td>
+<td><code>\nu</code>  </td>
+</tr>
+<tr>
+<td>xi</td>
+<td>$\Xi$</td>
+<td><code>\Xi</code></td>
+<td>$\xi$</td>
+<td><code>\xi</code>  </td>
+</tr>
+<tr>
+<td>omicron</td>
+<td>$O$</td>
+<td><code>O</code></td>
+<td>$\omicron$</td>
+<td><code>\omicron</code>  </td>
+</tr>
+<tr>
+<td>pi</td>
+<td>$\Pi$</td>
+<td><code>\Pi</code></td>
+<td>$\pi$</td>
+<td><code>\pi</code>  </td>
+</tr>
+<tr>
+<td>rho</td>
+<td>$P$</td>
+<td><code>P</code></td>
+<td>$\rho$</td>
+<td><code>\rho</code>  </td>
+</tr>
+<tr>
+<td>sigma</td>
+<td>$\Sigma$</td>
+<td><code>\Sigma</code></td>
+<td>$\sigma$</td>
+<td><code>\sigma</code>  </td>
+</tr>
+<tr>
+<td>tau</td>
+<td>$T$</td>
+<td><code>T</code></td>
+<td>$\tau$</td>
+<td><code>\tau</code>  </td>
+</tr>
+<tr>
+<td>upsilon</td>
+<td>$\Upsilon$</td>
+<td><code>\Upsilon</code></td>
+<td>$\upsilon$</td>
+<td><code>\upsilon</code>  </td>
+</tr>
+<tr>
+<td>phi</td>
+<td>$\Phi$</td>
+<td><code>\Phi</code></td>
+<td>$\phi$</td>
+<td><code>\phi</code>  </td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>$\varphi$</td>
+<td><code>\varphi</code>  </td>
+</tr>
+<tr>
+<td>chi</td>
+<td>$X$</td>
+<td><code>X</code></td>
+<td>$\chi$</td>
+<td><code>\chi</code>  </td>
+</tr>
+<tr>
+<td>psi</td>
+<td>$\Psi$</td>
+<td><code>\Psi</code></td>
+<td>$\psi$</td>
+<td><code>\psi</code>  </td>
+</tr>
+<tr>
+<td>omega</td>
+<td>$\Omega$</td>
+<td><code>\Omega</code></td>
+<td>$\omega$</td>
+<td><code>\omega</code>  </td>
+</tr>
+</tbody>
+</table></div>
+
+        <h3 id="括号"   >
+          <a href="#括号" class="heading-link"><i class="fas fa-link"></i></a>括号</h3>
+      <ul>
+<li>小括号与中括号可以直接使用</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>Markdown原文  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\lbrace$</td>
+<td><code>\lbrace</code></td>
+</tr>
+<tr>
+<td>$\rbrace$</td>
+<td><code>\rbrace</code></td>
+</tr>
+<tr>
+<td>$\langle$</td>
+<td><code>\langle</code></td>
+</tr>
+<tr>
+<td>$\rangle$</td>
+<td><code>\rangle</code></td>
+</tr>
+<tr>
+<td>$\lceil$</td>
+<td><code>\lceil</code>  </td>
+</tr>
+<tr>
+<td>$\rceil$</td>
+<td><code>\rceil</code></td>
+</tr>
+<tr>
+<td>$\lfloor$</td>
+<td><code>\lfloor</code></td>
+</tr>
+<tr>
+<td>$\rfloor$</td>
+<td><code>\rfloor</code></td>
+</tr>
+</tbody>
+</table></div>
+
+        <h3 id="MathJax公式编辑"   >
+          <a href="#MathJax公式编辑" class="heading-link"><i class="fas fa-link"></i></a>MathJax公式编辑</h3>
+      <ol>
+<li><strong>行内公式</strong>：行内公式可以与其他内容显示在同一行<ul>
+<li>用法：用两个美元符$包裹住公式即可。</li>
+<li>$f(x)=ax+b$</li>
+</ul>
+</li>
+<li><strong>行间公式</strong>：行间公式会占据单独的行。<ul>
+<li>用法：公式前后各添加两个美元符<br>$$<br>f(x)=ax+b<br>$$</li>
+</ul>
+</li>
+<li><strong>几个特殊符号</strong><ul>
+<li><strong>^表示上标</strong><ul>
+<li><code>$a^2$</code></li>
+<li>$a^2$</li>
+</ul>
+</li>
+<li><strong>_表示下标</strong><ul>
+<li>由于markdown与MathJax的渲染有冲突，下划线必须使用反斜杠转义</li>
+<li><code>$a\_2$</code></li>
+<li>$a_2$</li>
+</ul>
+</li>
+<li><strong>{}用于分组</strong><ul>
+<li>举个例子，a的b乘c次方，需要对bc进行分组，否则就变成了a的b次方乘c。</li>
+<li><code>$a^{bc}$</code></li>
+<li>$a^{bc}$</li>
+</ul>
+</li>
+<li><strong>公式推倒过程</strong><ul>
+<li>有时一行放不下所有的推导过程，放到多行并使得每行的等号对齐可以大大增加可读性。</li>
+<li>下面这个例子原始形式是A，然后经过三步推导最终得到了D。</li>
+<li>以符号 &amp; 的下一个字符进行对齐，末尾的三个反斜杠\用来分割行。<br>$$<br>\begin {aligned}<br>A&amp;=B \\<br>&amp;=C\\<br>&amp;=D<br>\end {aligned}<br>$$<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin &#123;aligned&#125;</span><br><span class="line">A&amp;&#x3D;B \\\</span><br><span class="line">&amp;&#x3D;C\\\</span><br><span class="line">&amp;&#x3D;D</span><br><span class="line">\end &#123;aligned&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></div></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>分段函数</strong><ul>
+<li>以符号 &amp; 的下一个字符进行对齐，末尾的三个反斜杠\用来分割行。<br>$$<br>sign(x)=\begin {cases}<br>+1, &amp; x\geq0 \\<br>-1, &amp; x&lt;0<br>\end {cases}<br>$$<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">sign(x)&#x3D;\begin &#123;cases&#125;</span><br><span class="line">+1, &amp; x\geq0 \\\</span><br><span class="line">-1, &amp; x\&lt;0</span><br><span class="line">\end &#123;cases&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></div></figure></li>
+</ul>
+</li>
+<li><strong>分数表示</strong><ul>
+<li>用法：\frac后面的两个分组分别作为分子和分母。</li>
+<li>$\frac{1}{6}$</li>
+<li><code>$\frac{1}{6}$</code></li>
+</ul>
+</li>
+</ol>
+
+        <h3 id="MathJax用法及例子"   >
+          <a href="#MathJax用法及例子" class="heading-link"><i class="fas fa-link"></i></a>MathJax用法及例子</h3>
+      <ol>
+<li><strong>输入开方</strong><ul>
+<li>\sqrt{2} 和 \sqrt{3}</li>
+<li>$\sqrt{2}$ 和 $\sqrt{3}$</li>
+</ul>
+</li>
+<li><strong>输入省略号</strong><ul>
+<li>数学公式中常见的省略号有两种，\ldots表示与文本底线对齐的省略号，\cdots表示与文本中线对齐的省略号。</li>
+<li>f(x1,x2,\ldots,xn) = x1^2 + x2^2 + \cdots + xn^2</li>
+<li>$f(x1,x2,\ldots,xn) = x1^2 + x2^2 + \cdots + xn^2$</li>
+</ul>
+</li>
+<li><strong>输入矢量</strong><ul>
+<li>\vec{a} \cdot \vec{b}=0</li>
+<li>$\vec{a} \cdot \vec{b}=0$</li>
+</ul>
+</li>
+<li><strong>输入积分</strong><ul>
+<li>\int_0^1 x^2 {\rm d}x</li>
+<li>$\int_0^1 x^2 {\rm d}x$</li>
+</ul>
+</li>
+<li><strong>极限运算</strong><ul>
+<li>\lim_{n \rightarrow +\infty} \frac{1}{n(n+1)}</li>
+<li>$\lim_{n \rightarrow +\infty} \frac{1}{n(n+1)}$</li>
+</ul>
+</li>
+<li><strong>累加、累乘运算</strong><ul>
+<li>\sum{i=0}^n \frac{1}{i^2}　和　\prod{i=0}^n \frac{1}{i^2}</li>
+<li>$\sum{i=0}^n \frac{1}{i^2}　和　\prod{i=0}^n \frac{1}{i^2}$</li>
+</ul>
+</li>
+<li><strong>其他特殊字符</strong></li>
+</ol>
+<ul>
+<li>关系运算符：</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\pm$</td>
+<td>\pm  </td>
+</tr>
+<tr>
+<td>$\times$</td>
+<td>\times  </td>
+</tr>
+<tr>
+<td>$\div$</td>
+<td>\div  </td>
+</tr>
+<tr>
+<td>$\mid$</td>
+<td>\mid  </td>
+</tr>
+<tr>
+<td>$\nmid$</td>
+<td>\nmid  </td>
+</tr>
+<tr>
+<td>$\cdot$</td>
+<td>\cdot  </td>
+</tr>
+<tr>
+<td>$\circ$</td>
+<td>\circ  </td>
+</tr>
+<tr>
+<td>$\ast$</td>
+<td>\ast  </td>
+</tr>
+<tr>
+<td>$\bigodot$</td>
+<td>\bigodot</td>
+</tr>
+<tr>
+<td>$\bigotimes$</td>
+<td>\bigotimes  </td>
+</tr>
+<tr>
+<td>$\bigoplus$</td>
+<td>\bigoplus  </td>
+</tr>
+<tr>
+<td>$\leq$</td>
+<td>\leq  </td>
+</tr>
+<tr>
+<td>$\geq$</td>
+<td>\geq  </td>
+</tr>
+<tr>
+<td>$\neq$</td>
+<td>\neq  </td>
+</tr>
+<tr>
+<td>$\approx$</td>
+<td>\approx  </td>
+</tr>
+<tr>
+<td>$\equiv$</td>
+<td>\equiv  </td>
+</tr>
+<tr>
+<td>$\sum$</td>
+<td>\sum  </td>
+</tr>
+<tr>
+<td>$\prod$</td>
+<td>\prod  </td>
+</tr>
+<tr>
+<td>$coprod$</td>
+<td>\coprod</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>集合运算符：</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\in$</td>
+<td>\in  </td>
+</tr>
+<tr>
+<td>$\notin$</td>
+<td>\notin  </td>
+</tr>
+<tr>
+<td>$\subset$</td>
+<td>\subset  </td>
+</tr>
+<tr>
+<td>$\subseteq$</td>
+<td>\subseteq  </td>
+</tr>
+<tr>
+<td>$\supseteq$</td>
+<td>\supseteq  </td>
+</tr>
+<tr>
+<td>$\bigcap$</td>
+<td>\bigcap  </td>
+</tr>
+<tr>
+<td>$\bigcup$</td>
+<td>\bigcup  </td>
+</tr>
+<tr>
+<td>$\bigvee$</td>
+<td>\bigvee  </td>
+</tr>
+<tr>
+<td>$\bigwedge$</td>
+<td>\bigwedge  </td>
+</tr>
+<tr>
+<td>$\biguplus$</td>
+<td>\biguplus  </td>
+</tr>
+<tr>
+<td>$\bigsqcup$</td>
+<td>\bigsqcup  </td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>对数运算符：</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\log$</td>
+<td>\log  </td>
+</tr>
+<tr>
+<td>$\lg$</td>
+<td>\lg  </td>
+</tr>
+<tr>
+<td>$\ln$</td>
+<td>\ln</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>三角函数运算符：</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\bot$</td>
+<td>\bot</td>
+</tr>
+<tr>
+<td>$\angle$</td>
+<td>\angle</td>
+</tr>
+<tr>
+<td>$30^\circ$</td>
+<td>30^\circ</td>
+</tr>
+<tr>
+<td>$\sin$</td>
+<td>\sin</td>
+</tr>
+<tr>
+<td>$\cos$</td>
+<td>\cos</td>
+</tr>
+<tr>
+<td>$\tan$</td>
+<td>\tan</td>
+</tr>
+<tr>
+<td>$\cot$</td>
+<td>\cot</td>
+</tr>
+<tr>
+<td>$\sec$</td>
+<td>\sec</td>
+</tr>
+<tr>
+<td>$\csc$</td>
+<td>\csc</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>微积分运算符：</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\prime$</td>
+<td>\prime</td>
+</tr>
+<tr>
+<td>$\int$</td>
+<td>\int</td>
+</tr>
+<tr>
+<td>$\iint$</td>
+<td>\iint</td>
+</tr>
+<tr>
+<td>$\iiint$</td>
+<td>\iiint</td>
+</tr>
+<tr>
+<td>$\iiiint$</td>
+<td>\iiiint</td>
+</tr>
+<tr>
+<td>$\oint$</td>
+<td>\oint</td>
+</tr>
+<tr>
+<td>$\lim$</td>
+<td>\lim</td>
+</tr>
+<tr>
+<td>$\lim$</td>
+<td>\lim</td>
+</tr>
+<tr>
+<td>$\infty$</td>
+<td>\infty</td>
+</tr>
+<tr>
+<td>$\nabla$</td>
+<td>\nabla</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>逻辑运算符</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\because$</td>
+<td>\because</td>
+</tr>
+<tr>
+<td>$\therefore$</td>
+<td>\therefore</td>
+</tr>
+<tr>
+<td>$\forall$</td>
+<td>\forall</td>
+</tr>
+<tr>
+<td>$\exists$</td>
+<td>\exists</td>
+</tr>
+<tr>
+<td>$\not=$</td>
+<td>\not=</td>
+</tr>
+<tr>
+<td>$\not\subset$</td>
+<td>\not\subset</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>戴帽符号</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\hat{y}$</td>
+<td>\hat{y}</td>
+</tr>
+<tr>
+<td>$\check{y}$</td>
+<td>\check{y}</td>
+</tr>
+<tr>
+<td>$\breve{y}$</td>
+<td>\breve{y}</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>连线符号</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\overline{a+b+c+d}$</td>
+<td>\overline{a+b+c+d}</td>
+</tr>
+<tr>
+<td>$\underline{a+b+c+d}$</td>
+<td>\underline{a+b+c+d}</td>
+</tr>
+<tr>
+<td>$\overbrace{a+\underbrace{b+c}{1.0}+d}^{2.0}$</td>
+<td>\overbrace{a+\underbrace{b+c}{1.0}+d}^{2.0}</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>箭头符号：</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\uparrow$</td>
+<td>\uparrow</td>
+</tr>
+<tr>
+<td>$\downarrow$</td>
+<td>\downarrow</td>
+</tr>
+<tr>
+<td>$\Uparrow$</td>
+<td>\Uparrow</td>
+</tr>
+<tr>
+<td>$\Downarrow$</td>
+<td>\Downarrow</td>
+</tr>
+<tr>
+<td>$\rightarrow$</td>
+<td>\rightarrow</td>
+</tr>
+<tr>
+<td>$\leftarrow$</td>
+<td>\leftarrow</td>
+</tr>
+<tr>
+<td>$\Rightarrow$</td>
+<td>\Rightarrow</td>
+</tr>
+<tr>
+<td>$\Leftarrow$</td>
+<td>\Leftarrow</td>
+</tr>
+<tr>
+<td>$\longrightarrow$</td>
+<td>\longrightarrow</td>
+</tr>
+<tr>
+<td>$\longleftarrow$</td>
+<td>\longleftarrow</td>
+</tr>
+<tr>
+<td>$\Longrightarrow$</td>
+<td>\Longrightarrow</td>
+</tr>
+<tr>
+<td>$\Longleftarrow$</td>
+<td>\Longleftarrow</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><p>要输出字符　空格　#　$　%　&amp;　<em>　{　}　，用命令：　\空格　#　\$　\%　\&amp;　</em>　{　}</p>
+</li>
+<li><p>要对公式的某一部分字符进行字体转换，可以用{\rm 需转换的部分字符}命令，其中\rm可以参照下表选择合适的字体。一般情况下，公式默认为意大利体。</p>
+</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> \rm　</td>
+<td>　罗马体　</td>
+</tr>
+<tr>
+<td>\it　</td>
+<td>　意大利体</td>
+</tr>
+<tr>
+<td>\bf　</td>
+<td>　黑体　　　　　　　　</td>
+</tr>
+<tr>
+<td>\cal</td>
+<td>　花体</td>
+</tr>
+<tr>
+<td>\sl　　</td>
+<td>倾斜体　　　　　　　</td>
+</tr>
+<tr>
+<td>\sf　</td>
+<td>　等线体</td>
+</tr>
+<tr>
+<td>\mit</td>
+<td>　数学斜体　　　　　　</td>
+</tr>
+<tr>
+<td>\tt　</td>
+<td>　打字机字体</td>
+</tr>
+<tr>
+<td>\sc　</td>
+<td>　小体大写字母</td>
+</tr>
+</tbody>
+</table></div>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://tech.noexception.cn/tags/MathJax/">MathJax</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2016/11/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">数据结构与算法复习（一）</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2016/10/08/C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0/"><span class="paginator-prev__text">C++读书笔记——函数</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#希腊字母"><span class="toc-number">1.</span> <span class="toc-text">
+          希腊字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#括号"><span class="toc-number">2.</span> <span class="toc-text">
+          括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MathJax公式编辑"><span class="toc-number">3.</span> <span class="toc-text">
+          MathJax公式编辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MathJax用法及例子"><span class="toc-number">4.</span> <span class="toc-text">
+          MathJax用法及例子</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/blog-avator.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">希川</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/lancediarmuid" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="Dream_lvtao0626" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="358195035" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">39</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>希川</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'V7d6fP5h6cz6uFhx1RTYt0Sh-gzGzoHsz',
+    appKey: 'zjOMjmE2TF5HUOmKNqX50H7B',
+    notify: true,
+    verify: true,
+    placeholder: 'Just go go',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script></body></html>
