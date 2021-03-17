@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tech.noexception.cn/"/>
-  <updated>2021-01-12T09:19:38.770Z</updated>
+  <updated>2021-03-17T06:12:53.763Z</updated>
   <id>http://tech.noexception.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021年度计划及目标</title>
+    <link href="http://tech.noexception.cn/2021/01/25/2021-purpose/"/>
+    <id>http://tech.noexception.cn/2021/01/25/2021-purpose/</id>
+    <published>2021-01-25T05:51:08.000Z</published>
+    <updated>2021-03-17T06:12:53.763Z</updated>
+    
+    <content type="html"><![CDATA[<p>仰望星空，脚踏实地。</p><a id="more"></a><p>2021要完成的目标：</p><ol><li>完成快速编码平台；</li><li>顺利完成今年的自学考试；</li><li>梳理 Java 后端技术栈知识；</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;仰望星空，脚踏实地。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="规划" scheme="http://tech.noexception.cn/tags/%E8%A7%84%E5%88%92/"/>
+    
+      <category term="目标" scheme="http://tech.noexception.cn/tags/%E7%9B%AE%E6%A0%87/"/>
+    
+  </entry>
   
   <entry>
     <title>先定一个小目标</title>
@@ -57,26 +79,6 @@
   </entry>
   
   <entry>
-    <title>中间件的常用命令汇总</title>
-    <link href="http://tech.noexception.cn/2019/12/29/middleware-usage/"/>
-    <id>http://tech.noexception.cn/2019/12/29/middleware-usage/</id>
-    <published>2019-12-28T16:00:00.000Z</published>
-    <updated>2021-01-12T09:19:38.769Z</updated>
-    
-    <content type="html"><![CDATA[<p>天道酬勤<br><a id="more"></a></p><ul><li>启动ES：docker run -itd –name es -p 9200:9200 -p 9300:9300 -e “discovery.type=single-node” elasticsearch /bin/bash</li><li>启动消息队列：docker run -itd -p 9876:9876 rocketmqinc/rocketmq:4.2.0</li></ul>        <h2 id="Rocketmq"   >          <a href="#Rocketmq" class="heading-link"><i class="fas fa-link"></i></a>Rocketmq</h2>      <ol><li>启动 NameServer:<ol><li><code>nohup sh bin/mqnamesrv &amp;; tail -f ~/logs/rocketmqlogs/namesrv.log</code></li></ol></li><li>启动 Broker:<ol><li><code>nohup sh bin/mqbroker -n localhost:9876 &amp;; tail -f ~/logs/rocketmqlogs/broker.log</code></li></ol></li><li>测试发送和接受消息：<ol><li>发送消息：<ol><li><code>export NAMESRV_ADDR=localhost:9876; sh bin/tools.sh org.apache.rocketmq.example.quickstart.Producer</code></li></ol></li><li>接受消息：<ol><li><code>sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer</code></li></ol></li></ol></li><li>关闭服务：<ol><li><code>sh bin/mqshutdown broker    // 停止 broker</code></li><li><code>sh bin/mqshutdown namesrv   // 停止 nameserver</code></li></ol></li><li>查看集群情况：<ol><li><code>./mqadmin clusterList -n 127.0.0.1:9876</code></li></ol></li><li>查看 broker 状态:<ol><li><code>./mqadmin brokerStatus -n 127.0.0.1:9876 -b 172.20.1.138:10911</code></li></ol></li><li>查看 topic 列表：<ol><li><code>./mqadmin topicList -n 127.0.0.1:9876</code></li></ol></li><li>查看 topic 状态：<ol><li><code>./mqadmin topicStatus -n 127.0.0.1:9876 -t MyTopic</code></li></ol></li><li>查看 topic 路由：<ol><li><code>./mqadmin topicRoute -n 127.0.0.1:9876 -t MyTopic</code></li></ol></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;天道酬勤&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="中间件" scheme="http://tech.noexception.cn/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Docker 铸剑之路</title>
     <link href="http://tech.noexception.cn/2019/12/29/docker-walking/"/>
     <id>http://tech.noexception.cn/2019/12/29/docker-walking/</id>
@@ -95,6 +97,26 @@
       <category term="docker" scheme="http://tech.noexception.cn/tags/docker/"/>
     
       <category term="容器" scheme="http://tech.noexception.cn/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中间件的常用命令汇总</title>
+    <link href="http://tech.noexception.cn/2019/12/29/middleware-usage/"/>
+    <id>http://tech.noexception.cn/2019/12/29/middleware-usage/</id>
+    <published>2019-12-28T16:00:00.000Z</published>
+    <updated>2021-01-12T09:19:38.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>天道酬勤<br><a id="more"></a></p><ul><li>启动ES：docker run -itd –name es -p 9200:9200 -p 9300:9300 -e “discovery.type=single-node” elasticsearch /bin/bash</li><li>启动消息队列：docker run -itd -p 9876:9876 rocketmqinc/rocketmq:4.2.0</li></ul>        <h2 id="Rocketmq"   >          <a href="#Rocketmq" class="heading-link"><i class="fas fa-link"></i></a>Rocketmq</h2>      <ol><li>启动 NameServer:<ol><li><code>nohup sh bin/mqnamesrv &amp;; tail -f ~/logs/rocketmqlogs/namesrv.log</code></li></ol></li><li>启动 Broker:<ol><li><code>nohup sh bin/mqbroker -n localhost:9876 &amp;; tail -f ~/logs/rocketmqlogs/broker.log</code></li></ol></li><li>测试发送和接受消息：<ol><li>发送消息：<ol><li><code>export NAMESRV_ADDR=localhost:9876; sh bin/tools.sh org.apache.rocketmq.example.quickstart.Producer</code></li></ol></li><li>接受消息：<ol><li><code>sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer</code></li></ol></li></ol></li><li>关闭服务：<ol><li><code>sh bin/mqshutdown broker    // 停止 broker</code></li><li><code>sh bin/mqshutdown namesrv   // 停止 nameserver</code></li></ol></li><li>查看集群情况：<ol><li><code>./mqadmin clusterList -n 127.0.0.1:9876</code></li></ol></li><li>查看 broker 状态:<ol><li><code>./mqadmin brokerStatus -n 127.0.0.1:9876 -b 172.20.1.138:10911</code></li></ol></li><li>查看 topic 列表：<ol><li><code>./mqadmin topicList -n 127.0.0.1:9876</code></li></ol></li><li>查看 topic 状态：<ol><li><code>./mqadmin topicStatus -n 127.0.0.1:9876 -t MyTopic</code></li></ol></li><li>查看 topic 路由：<ol><li><code>./mqadmin topicRoute -n 127.0.0.1:9876 -t MyTopic</code></li></ol></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;天道酬勤&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="中间件" scheme="http://tech.noexception.cn/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
   </entry>
   

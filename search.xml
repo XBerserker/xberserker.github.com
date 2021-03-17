@@ -4,6 +4,30 @@
   
     
     <entry>
+      <title><![CDATA[2021年度计划及目标]]></title>
+      <url>http://tech.noexception.cn/2021/01/25/2021-purpose/</url>
+      <content type="html"><![CDATA[<p>仰望星空，脚踏实地。</p>
+<a id="more"></a>
+<p>2021要完成的目标：</p>
+<ol>
+<li>完成快速编码平台；</li>
+<li>顺利完成今年的自学考试；</li>
+<li>梳理 Java 后端技术栈知识；</li>
+</ol>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 规划 </tag>
+            
+            <tag> 目标 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[先定一个小目标]]></title>
       <url>http://tech.noexception.cn/2020/07/07/one-purpose/</url>
       <content type="html"><![CDATA[<p>路漫漫其修远兮，吾将上下而求索。<br><a id="more"></a></p>
@@ -104,6 +128,51 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Docker 铸剑之路]]></title>
+      <url>http://tech.noexception.cn/2019/12/29/docker-walking/</url>
+      <content type="html"><![CDATA[<p>天道酬勤<br><a id="more"></a></p>
+
+        <h2 id="1-从指定的镜像，运行一个容器："   >
+          <a href="#1-从指定的镜像，运行一个容器：" class="heading-link"><i class="fas fa-link"></i></a>1. 从指定的镜像，运行一个容器：</h2>
+      <ul>
+<li>命令：<code>docker run -itd -p port:port -name &#39;container_name&#39; image_name</code></li>
+<li>参数解析：<ul>
+<li>i: 可交互的容器</li>
+<li>d: 在后台运行</li>
+<li>t: 应该是允许分配一个 tty 窗口</li>
+<li>p: 映射容器芋宿主机之间的端口</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="2-在一个后台运行的容器，执行命令-进入交互界面并-exit-时，不会将容器停止："   >
+          <a href="#2-在一个后台运行的容器，执行命令-进入交互界面并-exit-时，不会将容器停止：" class="heading-link"><i class="fas fa-link"></i></a>2. 在一个后台运行的容器，执行命令/进入交互界面并 exit 时，不会将容器停止：</h2>
+      <ol>
+<li>执行命令：<ol>
+<li>命令：<code>docker exec container_id_or_name want_to_exe_command</code></li>
+<li>效果：会在指定的容器中执行指定的命令，并且将结果打印在控制台中</li>
+</ol>
+</li>
+<li>进入交互界面并且 exit 时，不会将容器停止：<ol>
+<li>命令：<code>docker exec -it container_id_or_name /bin/bash</code></li>
+<li>效果：进入指定容器的bash交互命令行，允许通过 exit 退出</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> 容器 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[中间件的常用命令汇总]]></title>
       <url>http://tech.noexception.cn/2019/12/29/middleware-usage/</url>
       <content type="html"><![CDATA[<p>天道酬勤<br><a id="more"></a></p>
@@ -166,51 +235,6 @@
         <tags>
             
             <tag> 中间件 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Docker 铸剑之路]]></title>
-      <url>http://tech.noexception.cn/2019/12/29/docker-walking/</url>
-      <content type="html"><![CDATA[<p>天道酬勤<br><a id="more"></a></p>
-
-        <h2 id="1-从指定的镜像，运行一个容器："   >
-          <a href="#1-从指定的镜像，运行一个容器：" class="heading-link"><i class="fas fa-link"></i></a>1. 从指定的镜像，运行一个容器：</h2>
-      <ul>
-<li>命令：<code>docker run -itd -p port:port -name &#39;container_name&#39; image_name</code></li>
-<li>参数解析：<ul>
-<li>i: 可交互的容器</li>
-<li>d: 在后台运行</li>
-<li>t: 应该是允许分配一个 tty 窗口</li>
-<li>p: 映射容器芋宿主机之间的端口</li>
-</ul>
-</li>
-</ul>
-
-        <h2 id="2-在一个后台运行的容器，执行命令-进入交互界面并-exit-时，不会将容器停止："   >
-          <a href="#2-在一个后台运行的容器，执行命令-进入交互界面并-exit-时，不会将容器停止：" class="heading-link"><i class="fas fa-link"></i></a>2. 在一个后台运行的容器，执行命令/进入交互界面并 exit 时，不会将容器停止：</h2>
-      <ol>
-<li>执行命令：<ol>
-<li>命令：<code>docker exec container_id_or_name want_to_exe_command</code></li>
-<li>效果：会在指定的容器中执行指定的命令，并且将结果打印在控制台中</li>
-</ol>
-</li>
-<li>进入交互界面并且 exit 时，不会将容器停止：<ol>
-<li>命令：<code>docker exec -it container_id_or_name /bin/bash</code></li>
-<li>效果：进入指定容器的bash交互命令行，允许通过 exit 退出</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> docker </tag>
-            
-            <tag> 容器 </tag>
             
         </tags>
         
