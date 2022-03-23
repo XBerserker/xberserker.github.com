@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>js的学习笔记——预备篇 | Noexception</title>
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本篇文章会介绍之前学习Javascript时的一些笔记，苦于不知道可以写些啥有营养的东西。昨晚就忽然想到最近的Javascript这么火爆，于是乎就把以前学习的Javascript的笔记再整理一遍到自己这个“处女”博客吧~哈哈哈~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的学习笔记——预备篇">
+<meta property="og:url" content="http://tech.noexception.cn/2016/09/22/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Notes ❤ Ultimate">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本篇文章会介绍之前学习Javascript时的一些笔记，苦于不知道可以写些啥有营养的东西。昨晚就忽然想到最近的Javascript这么火爆，于是乎就把以前学习的Javascript的笔记再整理一遍到自己这个“处女”博客吧~哈哈哈~">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-22T10:44:41.000Z">
+<meta property="article:modified_time" content="2021-12-23T09:08:48.826Z">
+<meta property="article:author" content="希川">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://tech.noexception.cn/2016/09/22/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Notes ❤ Ultimate" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/lancediarmuid" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">希川</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Guangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form" method="GET" action="https://www.baidu.com/s?">
+	<div class="input-group">
+    	<input name="wd" type="text" class="form-control search-form-input" placeholder="搜索" />
+	    <span class="input-group-btn">
+	    	<button type="submit" class=" btn btn-flat search-form-submit"><i class="icon icon-search"></i></button>
+	    </span>
+    </div>
+</form>
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/lancediarmuid" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/lvtao0626" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Cpp读书笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Web/">Python Web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Web/Flask/">Flask</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%B1%E8%AF%AD/">英语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS/" rel="tag">ARTS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-%E6%89%93%E5%8D%A1/" rel="tag">ARTS 打卡</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS7/" rel="tag">CentOS7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MathJax/" rel="tag">MathJax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%BC%80%E5%8F%91/" rel="tag">Web开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/" rel="tag">activity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reports/" rel="tag">reports</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/view/" rel="tag">view</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E5%8F%B7/" rel="tag">信号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" rel="tag">小目标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC/" rel="tag">左值、右值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="tag">年度总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8D%A1/" rel="tag">打卡</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/" rel="tag">持续更新中</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" rel="tag">新年计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E7%A7%AF%E7%AC%94%E8%AE%B0/" rel="tag">日积笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87/" rel="tag">目标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%97%A7%E8%B4%A6/" rel="tag">算旧账</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" rel="tag">系统管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A6%E6%9D%9F/" rel="tag">约束</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1/" rel="tag">缓存设计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%8C%E5%8C%85/" rel="tag">背包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E5%88%92/" rel="tag">规划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E5%9B%BE/" rel="tag">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/" rel="tag">触发器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E5%88%92/" rel="tag">计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ARTS/" style="font-size: 13.75px;">ARTS</a> <a href="/tags/ARTS-%E6%89%93%E5%8D%A1/" style="font-size: 13px;">ARTS 打卡</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/CentOS7/" style="font-size: 13px;">CentOS7</a> <a href="/tags/Error/" style="font-size: 13px;">Error</a> <a href="/tags/Flask/" style="font-size: 13px;">Flask</a> <a href="/tags/MathJax/" style="font-size: 13px;">MathJax</a> <a href="/tags/Mysql/" style="font-size: 13.25px;">Mysql</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Web%E5%BC%80%E5%8F%91/" style="font-size: 13px;">Web开发</a> <a href="/tags/activity/" style="font-size: 13px;">activity</a> <a href="/tags/css/" style="font-size: 13px;">css</a> <a href="/tags/docker/" style="font-size: 13px;">docker</a> <a href="/tags/reports/" style="font-size: 13.25px;">reports</a> <a href="/tags/ssh/" style="font-size: 13px;">ssh</a> <a href="/tags/view/" style="font-size: 13.25px;">view</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 13px;">中间件</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 13px;">事务</a> <a href="/tags/%E4%BF%A1%E5%8F%B7/" style="font-size: 13px;">信号</a> <a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size: 13px;">容器</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 13px;">小目标</a> <a href="/tags/%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC/" style="font-size: 13px;">左值、右值</a> <a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 13px;">年度总结</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.25px;">总结</a> <a href="/tags/%E6%89%93%E5%8D%A1/" style="font-size: 14px;">打卡</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/" style="font-size: 13px;">持续更新中</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 13px;">指针</a> <a href="/tags/%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" style="font-size: 13px;">新年计划</a> <a href="/tags/%E6%97%A5%E7%A7%AF%E7%AC%94%E8%AE%B0/" style="font-size: 13px;">日积笔记</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 13px;">日记</a> <a href="/tags/%E6%A0%88/" style="font-size: 13px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87/" style="font-size: 13px;">目标</a> <a href="/tags/%E7%AE%97%E6%97%A7%E8%B4%A6/" style="font-size: 13px;">算旧账</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" style="font-size: 13px;">系统管理</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 13px;">索引</a> <a href="/tags/%E7%BA%A6%E6%9D%9F/" style="font-size: 13px;">约束</a> <a href="/tags/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1/" style="font-size: 13px;">缓存设计</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 13px;">背包</a> <a href="/tags/%E8%A7%84%E5%88%92/" style="font-size: 13px;">规划</a> <a href="/tags/%E8%A7%86%E5%9B%BE/" style="font-size: 13px;">视图</a> <a href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/" style="font-size: 13px;">触发器</a> <a href="/tags/%E8%AE%A1%E5%88%92/" style="font-size: 13px;">计划</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 13px;">队列</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/17/2022-new-page/" class="title">2022 新年计划</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-17T06:54:46.000Z" itemprop="datePublished">2022-01-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/15/sign-20211215/" class="title">每日总结打卡-2021/12/15</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-15T15:28:30.000Z" itemprop="datePublished">2021-12-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/12/cache/" class="title">缓存框架设计思路</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T16:15:06.000Z" itemprop="datePublished">2021-12-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/10/sign-1210/" class="title">每日总结打卡-2021/12/10</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-10T15:59:47.000Z" itemprop="datePublished">2021-12-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/27/202111summary/" class="title">2021年的第一篇总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-27T14:00:46.000Z" itemprop="datePublished">2021-11-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-预备知识"><span class="toc-number">1.</span> <span class="toc-text"> 一、预备知识：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在html文本中嵌入javascript的方式一共有三种"><span class="toc-number">1.1.</span> <span class="toc-text"> 1. 在HTML文本中嵌入Javascript的方式一共有三种：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-注释"><span class="toc-number">1.2.</span> <span class="toc-text"> 2. 注释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-变量"><span class="toc-number">1.3.</span> <span class="toc-text"> 3. 变量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-语句"><span class="toc-number">1.4.</span> <span class="toc-text"> 4. 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-函数"><span class="toc-number">1.5.</span> <span class="toc-text"> 5. 函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-js常用的互动方法"><span class="toc-number">2.</span> <span class="toc-text"> 二、JS常用的互动方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-内容输出documentwrite"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 内容输出（document.write）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-alert消息提示窗"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. alert消息提示窗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-确认confirm消息对话框"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. 确认（confirm消息对话框）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-提问prompt消息对话框"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. 提问（prompt消息对话框）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-打开新窗口windowopen"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. 打开新窗口（window.open）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-关闭窗口windowclose"><span class="toc-number">2.6.</span> <span class="toc-text"> 6. 关闭窗口（window.close）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-dom操作"><span class="toc-number">3.</span> <span class="toc-text"> 三、DOM操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-三种常见的dom节点"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. 三种常见的DOM节点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-通过id获取元素"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. 通过ID获取元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-innerhtml属性"><span class="toc-number">3.3.</span> <span class="toc-text"> 3. innerHTML属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-改变html样式"><span class="toc-number">3.4.</span> <span class="toc-text"> 4. 改变HTML样式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-显示和隐藏display属性"><span class="toc-number">3.5.</span> <span class="toc-text"> 5. 显示和隐藏(display属性)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-控制类名classname属性"><span class="toc-number">3.6.</span> <span class="toc-text"> 6. 控制类名（className属性）</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-js的学习笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js的学习笔记——预备篇
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/09/22/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+	  <time datetime="2016-09-22T10:44:41.000Z" itemprop="datePublished">2016-09-22</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/09/22/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本篇文章会介绍之前学习Javascript时的一些笔记，苦于不知道可以写些啥有营养的东西。昨晚就忽然想到最近的Javascript这么火爆，于是乎就把以前学习的Javascript的笔记再整理一遍到自己这个“处女”博客吧~哈哈哈~</p>
+<a id="more"></a>
+<h2 id="一-预备知识"><a class="markdownIt-Anchor" href="#一-预备知识"></a> 一、预备知识：</h2>
+<h3 id="1-在html文本中嵌入javascript的方式一共有三种"><a class="markdownIt-Anchor" href="#1-在html文本中嵌入javascript的方式一共有三种"></a> 1. 在HTML文本中嵌入Javascript的方式一共有三种：</h3>
+<ol>
+<li>内部引用</li>
+<li>内联引用</li>
+<li>外部引用</li>
+</ol>
+<ul>
+<li>但是，我们用的最多的是<code>外部引用</code>这种方式，如下代码所示：</li>
+</ul>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"path/to/your_code.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码可以放在html页面内的任何位置，具体要放在哪里，视具体情况而定了……</li>
+</ul>
+<h3 id="2-注释"><a class="markdownIt-Anchor" href="#2-注释"></a> 2. 注释：</h3>
+<ul>
+<li>关于JS的注释方法，我一直是使用C++风格的注释方法，即：<code>//这是一行注释</code>，可能是用久了就成为习惯了吧，哈哈哈，不过另外值得注意的是，如果是使用“WebStorm”的话，尽量使用快捷键，我记得单行注释的快捷键是：<code>Ctrl + /</code>，要是用到多行注释的时候就可以输入<code>/**</code>然后键入回车即可。</li>
+</ul>
+<h3 id="3-变量"><a class="markdownIt-Anchor" href="#3-变量"></a> 3. 变量：</h3>
+<ol>
+<li>定义变量要使用关键字：<code>var</code>，语法：<code>var 变量名</code></li>
+<li>命名规则：</li>
+<li>变量名必须使用字母、下划线或者美元符号开始；</li>
+<li>可以使用任意多个英文字母、数字、下划线或美元符号；</li>
+<li>不能使用JS关键字和JS保留字。</li>
+<li>注意：</li>
+</ol>
+<pre><code>- 变量要先声明，再赋值
+- 变量可以重复赋值；
+- 在JS中区分大小写；
+- 变量可以不声明，直接使用，但是不推荐，不规范；
+</code></pre>
+<h3 id="4-语句"><a class="markdownIt-Anchor" href="#4-语句"></a> 4. 语句</h3>
+<ul>
+<li>这里常用到的语句无非就是这几种：
+<ol>
+<li>赋值语句；</li>
+<li>判断语句；</li>
+<li>循环语句；</li>
+<li>选择语句。</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-函数"><a class="markdownIt-Anchor" href="#5-函数"></a> 5. 函数</h3>
+<ol>
+<li>定义的方法：</li>
+</ol>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//**</span><br><span class="line">* 函数的参数可以有任意多个</span><br><span class="line">* 函数可以有返回值</span><br><span class="line">**/</span><br><span class="line">function fun1(arg1, arg2)&#123;</span><br><span class="line">    //your code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>函数的调用：</li>
+<li>放在<code>&lt;head&gt;</code>标签之间，会自动运行</li>
+<li>使用标签<code>&lt;input type=&quot;button&quot; value=&quot;点击&quot; onclick=&quot;函数名&quot;&gt;</code></li>
+</ol>
+<h2 id="二-js常用的互动方法"><a class="markdownIt-Anchor" href="#二-js常用的互动方法"></a> 二、JS常用的互动方法</h2>
+<h3 id="1-内容输出documentwrite"><a class="markdownIt-Anchor" href="#1-内容输出documentwrite"></a> 1. 内容输出（document.write）</h3>
+<ul>
+<li>document.write可用于直接想HTML输出流写内容。
+<ol>
+<li>输出内容直接用“双引号”括起来，直接输出引号内的内容。</li>
+<li>通过变量输出内容：</li>
+</ol>
+<ul>
+<li>eg: <code>document.write(mystr);</code></li>
+</ul>
+<ol start="3">
+<li>输出多项内容，内容之间用&quot;+&quot;号连接</li>
+</ol>
+<ul>
+<li>eg: <code>document.write(mystr+&quot;Hello&quot;);</code></li>
+</ul>
+<ol start="4">
+<li>输出HTML标签</li>
+</ol>
+<ul>
+<li>eg: <code>document.write(mystr+&quot;&lt;br&gt;&quot;);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-alert消息提示窗"><a class="markdownIt-Anchor" href="#2-alert消息提示窗"></a> 2. alert消息提示窗</h3>
+<ul>
+<li>alert(str)</li>
+</ul>
+<h3 id="3-确认confirm消息对话框"><a class="markdownIt-Anchor" href="#3-确认confirm消息对话框"></a> 3. 确认（confirm消息对话框）</h3>
+<ul>
+<li>作用：用于允许用户做选择的动作；</li>
+<li>语法：<code>confirm(str);</code>；</li>
+<li>参数说明：</li>
+</ul>
+  <table border=1>
+  <tr><td>**str**</td><td>在消息对话框中要显示的文本</td></tr><tr><td>返回值</td><td>Boolean值</td></tr></table>
+<h3 id="4-提问prompt消息对话框"><a class="markdownIt-Anchor" href="#4-提问prompt消息对话框"></a> 4. 提问（prompt消息对话框）</h3>
+<ul>
+<li>**作用：**通常用于询问一些需要用户交互的信息。弹出消息对话框（包含一个确定按钮，取消按钮与一个文本输入框）</li>
+<li><strong>语法：</strong><code>prompt(str1,str2);</code></li>
+<li><strong>参数说明：</strong></li>
+</ul>
+  <table><tr><td>**str1**</td><td>要显示在消息对话框的文本，不可修改；</td></tr><tr><td>**str2**</td><td>文本框中的内容，可修改</td></tr></table>
+  - **返回值：**
+    1. 点击确定按钮，文本款的内容将作为函数返回值；
+    2. 点击取消按钮，返回`null`;
+<h3 id="5-打开新窗口windowopen"><a class="markdownIt-Anchor" href="#5-打开新窗口windowopen"></a> 5. 打开新窗口（window.open）</h3>
+<ul>
+<li><strong>作用：</strong><code>open()</code>方法可以查找一个已经存在或者新建的浏览器窗口；</li>
+<li><strong>语法：</strong><code>window.open([URL],[窗口名称],[参数字符串])；</code>；</li>
+<li><strong>参数说明：</strong>
+<ul>
+<li>URL:可选参数，在窗口中要显示网页的网址或路径。如果省略这个参数，或者它的值是空字符串，那么窗口就不显示任何文档；</li>
+<li>窗口名称：可选参数,被打开窗口的名称。
+<ol>
+<li>该名称由字母、数字、下划线字符组成；</li>
+<li><code>_top</code>,<code>_blank</code>,<code>_self</code>具有特殊意义的名称；</li>
+</ol>
+<ul>
+<li><code>_top</code>：框架网页中在上不窗口中显示目标网页；</li>
+<li><code>_blank</code>：在新窗口中显示目标网页；</li>
+<li><code>_self</code>：在当前窗口显示目标网页。</li>
+</ul>
+<ol start="3">
+<li>相同<code>name</code>的窗口只能创建一个，要想创建多个窗口，则<code>name</code>不能相同。</li>
+<li><code>name</code>不能包含空格</li>
+</ol>
+</li>
+<li>参数字符串：可选参数，设置窗口参数，各参数用逗号隔开。</li>
+<li><strong>参数表：</strong></li>
+</ul>
+<table>
+<tr><th>参数</th><th>值</th><th>说明</th></tr><tr><td>top</td><td>number</td><td>窗口顶部离开屏幕顶部的像素数</td></tr><tr><td>left</td><td>number</td><td>窗口左端离开屏幕左端的像素数</td></tr><tr><td>width</td><td>number</td><td>窗口的宽度</td></tr><tr><td>height</td><td>number</td><td>窗口的高度</td></tr><tr><td>menubar</td><td>yes,no</td><td>窗口有没有菜单</td></tr><tr><td>toolbar</td><td>yes,no</td><td>窗口有没有工具条</td></tr><tr><td>scroll</td><td>yes,no</td><td>窗口有没有滚动条</td></tr><tr><td>status</td><td>yes,no</td><td>窗口有没有状态栏</td></tr></table>
+</li>
+</ul>
+<h3 id="6-关闭窗口windowclose"><a class="markdownIt-Anchor" href="#6-关闭窗口windowclose"></a> 6. 关闭窗口（window.close）</h3>
+<ul>
+<li>**作用：**关闭窗口；</li>
+<li><strong>语法：</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.close();<span class="comment">//关闭当前窗口</span></span><br><span class="line">&lt;窗口对象&gt;.close();<span class="comment">//关闭指定窗口</span></span><br></pre></td></tr></table></figure>
+<pre><code>eg:关闭新建的窗口：
+</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mywin = <span class="built_in">window</span>.open(<span class="string">'http://imooc.com'</span>);</span><br><span class="line">mywin.close();</span><br></pre></td></tr></table></figure>
+<h2 id="三-dom操作"><a class="markdownIt-Anchor" href="#三-dom操作"></a> 三、DOM操作</h2>
+<ul>
+<li>介绍：
+<ul>
+<li><strong>文档对象模型（DOM）定义访问和处理HTML文档的标准方法。</strong></li>
+<li><strong>HTML文档可以说有节点构成的集合。</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="1-三种常见的dom节点"><a class="markdownIt-Anchor" href="#1-三种常见的dom节点"></a> 1. 三种常见的DOM节点：</h3>
+<ol>
+<li><strong>元素节点：</strong><code>&lt;html&gt;,&lt;body&gt;,&lt;p&gt;</code>等，即标签；</li>
+<li>**文本节点：**向用户展示的内容，如<code>&lt;li&gt;...&lt;/li&gt;</code>中的JavaScript</li>
+<li>**属性节点：**元素属性，如<code>&lt;a&gt;</code>标签的链接属性。</li>
+</ol>
+<h3 id="2-通过id获取元素"><a class="markdownIt-Anchor" href="#2-通过id获取元素"></a> 2. 通过ID获取元素</h3>
+<ul>
+<li>语法：<code>document.getElementById(&quot;id&quot;);</code>
+<ul>
+<li>获取的元素是一个对象，如想对元素进行操作，我们要通过它的属性或方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-innerhtml属性"><a class="markdownIt-Anchor" href="#3-innerhtml属性"></a> 3. innerHTML属性</h3>
+<ul>
+<li><strong>语法：</strong><code>object.innerHTML;</code></li>
+<li>**作用：**innerHTML属性用于获取或替换HTML元素的内容</li>
+<li>
+<ol>
+<li>Object是获取的元素对象，如通过<code>document.getElementById(&quot;ID&quot;);</code>获取的元素；</li>
+<li>innerHTML区分大小写<br />
+eg：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mycon = <span class="built_in">document</span>.getElementById(<span class="string">"con"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"......"</span>+mycon.innerHTML+<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">mycon.innerHTML=<span class="string">"New text!"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"..."</span>+mycon.innerHTML+<span class="string">"&lt;br&gt;"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-改变html样式"><a class="markdownIt-Anchor" href="#4-改变html样式"></a> 4. 改变HTML样式：</h3>
+<ul>
+<li><strong>HTML DOM允许Javascript改变HTML元素的样式</strong></li>
+<li><strong>语法：</strong><code>object.style.properly=new style;</code></li>
+<li>**注意：**Object是获取的元素对象，如通过<code>getElementById(&quot;ID&quot;);</code>获取的元素。</li>
+<li><strong>基本属性表(property)：</strong></li>
+</ul>
+<table><tr><th>属性</th><th>描述</th></tr><tr><td>backgroundColor</td><td>设置元素背景颜色</td></tr><tr><td>height</td><td>设置元素的高度</td></tr><tr><td>width</td><td>设置元素的宽度</td></tr><tr><td>color</td><td>设置文本的颜色</td></tr><tr><td>font</td><td>在一行设置所有字体的属性</td></tr><tr><td>fontFamily</td><td>设置元素的字体系列</td></tr><tr><td>fontSize</td><td>设置元素的字体大小</td></tr></table>
+<h3 id="5-显示和隐藏display属性"><a class="markdownIt-Anchor" href="#5-显示和隐藏display属性"></a> 5. 显示和隐藏(display属性)</h3>
+<ul>
+<li><strong>网页中经常会看到显示和隐藏的效果，可以通过<code>display</code>属性来设置</strong></li>
+<li><strong>语法：</strong><code>Object.style.display=value;</code></li>
+<li><strong>注意：</strong>
+<ul>
+<li><code>Object</code>是获取的元素对象，如通过<code>document.getElementById(&quot;id&quot;)</code>获取的元素。</li>
+<li><strong>value的取值：</strong></li>
+</ul>
+<table><tr><th>值</th><th>描述</th></tr><tr><td>none</td><td>此元素不会被显示（即隐藏）</td></tr><tr><td>block</td><td>此元素显示为块级元素（即显示）</td></tr></table>
+</li>
+</ul>
+<h3 id="6-控制类名classname属性"><a class="markdownIt-Anchor" href="#6-控制类名classname属性"></a> 6. 控制类名（className属性）</h3>
+<ul>
+<li><strong>className属性设置或返回元素的class属性</strong></li>
+<li><strong>语法：</strong><code>Object.className=classname;</code></li>
+<li><strong>作用：</strong>
+<ol>
+<li>获取元素的class属性；</li>
+<li>为网页的某个元素指定一个CSS样式来更改元素的外观。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://tech.noexception.cn/2016/09/22/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="js的学习笔记——预备篇" target="_blank" rel="external">http://tech.noexception.cn/2016/09/22/js的学习笔记/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/lancediarmuid" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/lancediarmuid" target="_blank"><span class="text-dark">希川</span><small class="ml-1x">Engineer</small></a></h3>
+        <div>格物致知。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2016/09/25/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%A2%84%E5%A4%87%E7%AF%87/" title="js的学习笔记——终篇"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2016/09/19/okhttp%E8%BE%B9%E5%AD%A6%E8%BE%B9%E8%AE%B0/" title="okhttp边学边记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/lancediarmuid" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/lvtao0626" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:tech.noexception.cn ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'V7d6fP5h6cz6uFhx1RTYt0Sh-gzGzoHsz',
+    appKey: 'zjOMjmE2TF5HUOmKNqX50H7B',
+    placeholder: 'Just go go',
+    avatar: 'mp',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

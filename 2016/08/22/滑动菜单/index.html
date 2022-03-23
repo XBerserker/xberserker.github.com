@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>滑动菜单 | Noexception</title>
+  <meta name="description" content="介绍滑动菜单的用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滑动菜单">
+<meta property="og:url" content="http://tech.noexception.cn/2016/08/22/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95/index.html">
+<meta property="og:site_name" content="Notes ❤ Ultimate">
+<meta property="og:description" content="介绍滑动菜单的用法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-08-22T14:38:23.000Z">
+<meta property="article:modified_time" content="2021-12-23T09:08:48.887Z">
+<meta property="article:author" content="希川">
+<meta property="article:tag" content="view">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://tech.noexception.cn/2016/08/22/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Notes ❤ Ultimate" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/lancediarmuid" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">希川</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Guangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form" method="GET" action="https://www.baidu.com/s?">
+	<div class="input-group">
+    	<input name="wd" type="text" class="form-control search-form-input" placeholder="搜索" />
+	    <span class="input-group-btn">
+	    	<button type="submit" class=" btn btn-flat search-form-submit"><i class="icon icon-search"></i></button>
+	    </span>
+    </div>
+</form>
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/lancediarmuid" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/lvtao0626" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Cpp读书笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Web/">Python Web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Web/Flask/">Flask</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%B1%E8%AF%AD/">英语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS/" rel="tag">ARTS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-%E6%89%93%E5%8D%A1/" rel="tag">ARTS 打卡</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS7/" rel="tag">CentOS7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MathJax/" rel="tag">MathJax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%BC%80%E5%8F%91/" rel="tag">Web开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/" rel="tag">activity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reports/" rel="tag">reports</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/view/" rel="tag">view</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E5%8F%B7/" rel="tag">信号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" rel="tag">小目标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC/" rel="tag">左值、右值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="tag">年度总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8D%A1/" rel="tag">打卡</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/" rel="tag">持续更新中</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" rel="tag">新年计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E7%A7%AF%E7%AC%94%E8%AE%B0/" rel="tag">日积笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87/" rel="tag">目标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%97%A7%E8%B4%A6/" rel="tag">算旧账</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" rel="tag">系统管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A6%E6%9D%9F/" rel="tag">约束</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1/" rel="tag">缓存设计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%8C%E5%8C%85/" rel="tag">背包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E5%88%92/" rel="tag">规划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E5%9B%BE/" rel="tag">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/" rel="tag">触发器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E5%88%92/" rel="tag">计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ARTS/" style="font-size: 13.75px;">ARTS</a> <a href="/tags/ARTS-%E6%89%93%E5%8D%A1/" style="font-size: 13px;">ARTS 打卡</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/CentOS7/" style="font-size: 13px;">CentOS7</a> <a href="/tags/Error/" style="font-size: 13px;">Error</a> <a href="/tags/Flask/" style="font-size: 13px;">Flask</a> <a href="/tags/MathJax/" style="font-size: 13px;">MathJax</a> <a href="/tags/Mysql/" style="font-size: 13.25px;">Mysql</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Web%E5%BC%80%E5%8F%91/" style="font-size: 13px;">Web开发</a> <a href="/tags/activity/" style="font-size: 13px;">activity</a> <a href="/tags/css/" style="font-size: 13px;">css</a> <a href="/tags/docker/" style="font-size: 13px;">docker</a> <a href="/tags/reports/" style="font-size: 13.25px;">reports</a> <a href="/tags/ssh/" style="font-size: 13px;">ssh</a> <a href="/tags/view/" style="font-size: 13.25px;">view</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 13px;">中间件</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 13px;">事务</a> <a href="/tags/%E4%BF%A1%E5%8F%B7/" style="font-size: 13px;">信号</a> <a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size: 13px;">容器</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 13px;">小目标</a> <a href="/tags/%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC/" style="font-size: 13px;">左值、右值</a> <a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 13px;">年度总结</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.25px;">总结</a> <a href="/tags/%E6%89%93%E5%8D%A1/" style="font-size: 14px;">打卡</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/" style="font-size: 13px;">持续更新中</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 13px;">指针</a> <a href="/tags/%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" style="font-size: 13px;">新年计划</a> <a href="/tags/%E6%97%A5%E7%A7%AF%E7%AC%94%E8%AE%B0/" style="font-size: 13px;">日积笔记</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 13px;">日记</a> <a href="/tags/%E6%A0%88/" style="font-size: 13px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87/" style="font-size: 13px;">目标</a> <a href="/tags/%E7%AE%97%E6%97%A7%E8%B4%A6/" style="font-size: 13px;">算旧账</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" style="font-size: 13px;">系统管理</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 13px;">索引</a> <a href="/tags/%E7%BA%A6%E6%9D%9F/" style="font-size: 13px;">约束</a> <a href="/tags/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1/" style="font-size: 13px;">缓存设计</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 13px;">背包</a> <a href="/tags/%E8%A7%84%E5%88%92/" style="font-size: 13px;">规划</a> <a href="/tags/%E8%A7%86%E5%9B%BE/" style="font-size: 13px;">视图</a> <a href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/" style="font-size: 13px;">触发器</a> <a href="/tags/%E8%AE%A1%E5%88%92/" style="font-size: 13px;">计划</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 13px;">队列</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/17/2022-new-page/" class="title">2022 新年计划</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-17T06:54:46.000Z" itemprop="datePublished">2022-01-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/15/sign-20211215/" class="title">每日总结打卡-2021/12/15</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-15T15:28:30.000Z" itemprop="datePublished">2021-12-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/12/cache/" class="title">缓存框架设计思路</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T16:15:06.000Z" itemprop="datePublished">2021-12-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/10/sign-1210/" class="title">每日总结打卡-2021/12/10</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-10T15:59:47.000Z" itemprop="datePublished">2021-12-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/27/202111summary/" class="title">2021年的第一篇总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-27T14:00:46.000Z" itemprop="datePublished">2021-11-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#预备"><span class="toc-number">1.</span> <span class="toc-text"> 预备：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number"></span> <span class="toc-text"> 示例：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样式一"><span class="toc-number">1.</span> <span class="toc-text"> 样式一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slidingpanelayout-一些主要的方法"><span class="toc-number">2.</span> <span class="toc-text"> SlidingPaneLayout 一些主要的方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样式二"><span class="toc-number">3.</span> <span class="toc-text"> 样式二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#drawerlayout的一些主要方法"><span class="toc-number">4.</span> <span class="toc-text"> DrawerLayout的一些主要方法：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当下的设计标准"><span class="toc-number"></span> <span class="toc-text"> 当下的设计标准</span></a>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-滑动菜单" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      滑动菜单
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/08/22/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95/" class="article-date">
+	  <time datetime="2016-08-22T14:38:23.000Z" itemprop="datePublished">2016-08-22</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/view/" rel="tag">view</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/08/22/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p align = "center">介绍滑动菜单的用法</p>
+<a id="more"></a>
+<h3 id="预备"><a class="markdownIt-Anchor" href="#预备"></a> 预备：</h3>
+<ul>
+<li>support v4包，继承自ViewGroup</li>
+</ul>
+<h2 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例：</h2>
+<h3 id="样式一"><a class="markdownIt-Anchor" href="#样式一"></a> 样式一：</h3>
+<ul>
+<li>示例布局</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;android.support.v4.widget.SlidingPaneLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:id=<span class="string">"@+id/SlidingPane"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match"</span></span><br><span class="line">    android:background=<span class="string">"#D32F2F"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:id=<span class="string">"@+id/ll_menu"</span></span><br><span class="line">        android:gravity=<span class="string">"center"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:background=<span class="string">"#d32f2f"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:text=<span class="string">"Menu"</span></span><br><span class="line">            android:textSize=<span class="string">"25sp"</span></span><br><span class="line">            android:textColor=<span class="string">"#ffffff"</span></span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span> /&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:id=<span class="string">"@+id/ll_main"</span></span><br><span class="line">        android:background=<span class="string">"#ffffff"</span></span><br><span class="line">        android:orientation=<span class="string">"vertical"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=<span class="string">"@+id/toolbar"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">            android:background=<span class="string">"@color/colorPrimary"</span></span><br><span class="line">            app:popupTheme=<span class="string">"@style/ThemeOverlay.AppCompat.Light"</span></span><br><span class="line">            app:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span>/&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.v4.widget.SlidingPaneLayout&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="slidingpanelayout-一些主要的方法"><a class="markdownIt-Anchor" href="#slidingpanelayout-一些主要的方法"></a> SlidingPaneLayout 一些主要的方法：</h3>
+<ul>
+<li><code>setParallaxDistance(int parallaxBy)</code>设置滑动视差</li>
+<li><code>setCoveredFadeColor(int color)</code>导航菜单视图的滑动颜色渐变</li>
+<li><code>setSliderFadeColor(int color)</code>主视图的滑动颜色渐变</li>
+<li><code>setPanelSlideListener(SlidingPanelLayou.PanelSlideListener listener)</code>滑动监听</li>
+<li><code>openPanel()</code>打开导航菜单</li>
+<li><code>closePanel()</code>关闭导航菜单</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SlidingPanelLayoutActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> SlidingPaneLayout mSlidingPane;</span><br><span class="line">  <span class="keyword">private</span> LinearLayout ll_menu,ll_main;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">      setContentView(R.layout.first_layout);</span><br><span class="line">      mSlidingPane=(SlidingPaneLayout)findViewById(R.id.SlidingPane);</span><br><span class="line">      ll_main=(LinearLayout) findViewById(R.id.ll_main);</span><br><span class="line">      ll_menu=(LinearLayout) findViewById(R.id.ll_menu);</span><br><span class="line">      setSupportActionBar((Toolbar)findViewById(R.id.toolbar));</span><br><span class="line"></span><br><span class="line">      <span class="comment">//设置滑动视差    可选</span></span><br><span class="line">      mSlidingPane.setParallaxDistance(<span class="number">200</span>);</span><br><span class="line">      <span class="comment">//菜单滑动的颜色渐变设置   可选</span></span><br><span class="line"><span class="comment">//        mSlidingPane.setCoveredFadeColor(getResources().getColor(R.color.colorAccent));</span></span><br><span class="line">      <span class="comment">//主视图滑动的颜色渐变设置  可选</span></span><br><span class="line">      mSlidingPane.setSliderFadeColor(<span class="number">0</span>);</span><br><span class="line">      <span class="comment">//滑动监听  可选</span></span><br><span class="line">      mSlidingPane.setPanelSlideListener(<span class="keyword">new</span> SlidingPaneLayout.PanelSlideListener()&#123;</span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           * Called when a sliding pane's position changes.</span></span><br><span class="line"><span class="comment">           *</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> panel       The child view that was moved</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> slideOffset The new offset of this sliding pane within its range, from 0-1</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPanelSlide</span><span class="params">(View panel, <span class="keyword">float</span> slideOffset)</span> </span>&#123;</span><br><span class="line">              Log.d(<span class="string">"mylog"</span>, <span class="string">"slide---"</span>+slideOffset);</span><br><span class="line">              <span class="comment">//slideOffset这个参数是跟随滑动0-1变化的</span></span><br><span class="line">              <span class="comment">//通过这个竖直变化我们可以做出一些不一样的滑动效果</span></span><br><span class="line"><span class="comment">//                ll_menu.setScaleY(slideOffset/2+0.5F);</span></span><br><span class="line"><span class="comment">//                ll_menu.setScaleX(slideOffset/2+0.5F);</span></span><br><span class="line"><span class="comment">//                ll_main.setScaleY(1-slideOffset/5);</span></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           * Called when a sliding pane becomes slid completely open. The pane may or may not</span></span><br><span class="line"><span class="comment">           * be interactive at this point depending on how much of the pane is visible.</span></span><br><span class="line"><span class="comment">           *</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> panel The child view that was slid to an open position, revealing other panes</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPanelOpened</span><span class="params">(View panel)</span> </span>&#123;</span><br><span class="line">              Log.d(<span class="string">"mylog"</span>,<span class="string">"slide---open"</span>);</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           * Called when a sliding pane becomes slid completely closed. The pane is now guaranteed</span></span><br><span class="line"><span class="comment">           * to be interactive. It may now obscure other views in the layout.</span></span><br><span class="line"><span class="comment">           *</span></span><br><span class="line"><span class="comment">           * <span class="doctag">@param</span> panel The child view that was slid to a closed position</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPanelClosed</span><span class="params">(View panel)</span> </span>&#123;</span><br><span class="line">              Log.d(<span class="string">"mylog"</span>,<span class="string">"slide---close"</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这样就做出了互动导航的效果</li>
+<li>注意：<strong>在滑动监听中的这个方法里，根据<code>slideOffset</code>参数0~1的变化可以去改变视图大小就会做出更多种类的效果，这里我们设置滑动过程中改变主视图的大小，代码如下：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPanelSlide</span><span class="params">(View panel, <span class="keyword">float</span> slideOffset)</span></span>&#123;</span><br><span class="line">    <span class="comment">//slideOffset这个参数是跟随滑动0~1变化的</span></span><br><span class="line">    <span class="comment">//通过这个数值变化我们可以做出一些不一样的滑动效果</span></span><br><span class="line">    ll_menu.setScaleY(slideOffset/<span class="number">2</span>+<span class="number">0.5F</span>);</span><br><span class="line">    ll_menu.setScaleX(slideOffset<span class="number">.2</span>+<span class="number">0.5F</span>);</span><br><span class="line">    ll_main.setScaleY(<span class="number">1</span>-slideOffset/<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="样式二"><a class="markdownIt-Anchor" href="#样式二"></a> 样式二：</h3>
+<ul>
+<li>快速实现这个效果需要利用V4包的DrawerLayout这个布局容器，可见V4包下面有多少好东西，另外其实<strong>SlidingPaneLayout</strong>和<strong>DrawerLayout</strong>都是利用V4的<strong>ViewDragHelper</strong>去实现的，这是一个帮助类，这里就不多介绍了，对它感兴趣的可以深入了解下。</li>
+<li>示例布局：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;LinearLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:orientation=<span class="string">"vertical"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v7.widget.Toolbar</span><br><span class="line">        android:id=<span class="string">"@+id/toolbar2"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">        android:background=<span class="string">"@color/colorPrimary"</span></span><br><span class="line">        app:popupTheme=<span class="string">"@style/ThemeOverlay.AppCompat.Light"</span></span><br><span class="line">        app:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v4.widget.DrawerLayout</span><br><span class="line">        android:id=<span class="string">"@+id/dl_left"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:background=<span class="string">"#ffffff"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--drawer layout--&gt;</span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">            android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">            android:background=<span class="string">"#d32f2f"</span></span><br><span class="line">            android:layout_gravity=<span class="string">"start"</span>&gt;</span><br><span class="line"></span><br><span class="line">            &lt;TextView</span><br><span class="line">                android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">                android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">                android:text=<span class="string">"Menu"</span></span><br><span class="line">                android:textSize=<span class="string">"25sp"</span></span><br><span class="line">                android:gravity=<span class="string">"center"</span></span><br><span class="line">                android:textColor=<span class="string">"#ffffff"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.v4.widget.DrawerLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要注意的是主视图的布局代码要放在侧滑菜单布局的前面，侧滑菜单布局的代码中<code>android:layout_gravity=&quot;start&quot;</code>从左侧滑动，反之end右侧滑动</li>
+</ul>
+<h3 id="drawerlayout的一些主要方法"><a class="markdownIt-Anchor" href="#drawerlayout的一些主要方法"></a> DrawerLayout的一些主要方法：</h3>
+<ul>
+<li><code>addDrawerListener(DrawerLayout.DrawerListener listener)</code>添加滑动监听</li>
+<li><code>openDrawer(int gravity)</code>开启导航菜单参数：<code>GravityCompat.START GravityCompat.END</code>要跟XML设置相同</li>
+<li><code>closeDrawer(int gravity)</code>关闭导航菜单</li>
+<li><code>isDrawerOpen(int drawerGravity)</code>菜单是否开启</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DrawerLayoutActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> DrawerLayout drawerLayout;</span><br><span class="line">    <span class="keyword">private</span> Toolbar toolbar;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.second_layout);</span><br><span class="line">        setSupportActionBar(toolbar = (Toolbar) findViewById(R.id.toolbar2));</span><br><span class="line">        drawerLayout = (DrawerLayout)findViewById(R.id.dl_left);</span><br><span class="line">        <span class="comment">//ActionBarDrawerToggle是DrawerLayout.DrawerListener的实现</span></span><br><span class="line">        <span class="comment">//可以方便的将drawlayout和actionbar结合起来</span></span><br><span class="line">        ActionBarDrawerToggle actionBarDrawerToggle = <span class="keyword">new</span> ActionBarDrawerToggle(<span class="keyword">this</span>,drawerLayout, toolbar, R.string.open, R.string.close)&#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * &#123;<span class="doctag">@link</span> DrawerLayout.DrawerListener&#125; callback method. If you do not use your</span></span><br><span class="line"><span class="comment">             * ActionBarDrawerToggle instance directly as your DrawerLayout's listener, you should call</span></span><br><span class="line"><span class="comment">             * through to this method from your own listener object.</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             * <span class="doctag">@param</span> drawerView Drawer view that is now open</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawerOpened</span><span class="params">(View drawerView)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onDrawerOpened(drawerView);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * &#123;<span class="doctag">@link</span> DrawerLayout.DrawerListener&#125; callback method. If you do not use your</span></span><br><span class="line"><span class="comment">             * ActionBarDrawerToggle instance directly as your DrawerLayout's listener, you should call</span></span><br><span class="line"><span class="comment">             * through to this method from your own listener object.</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             * <span class="doctag">@param</span> drawerView Drawer view that is now closed</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawerClosed</span><span class="params">(View drawerView)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onDrawerClosed(drawerView);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        actionBarDrawerToggle.syncState();</span><br><span class="line">        drawerLayout.addDrawerListener(actionBarDrawerToggle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>DrawerLayout</strong>跟<strong>ActionBarDrawerToggle</strong>配合快速就可以快速构建出具有动画交互的滑动导航菜单效果，是不是很简单。</li>
+</ul>
+<h2 id="当下的设计标准"><a class="markdownIt-Anchor" href="#当下的设计标准"></a> 当下的设计标准</h2>
+<ul>
+<li>接下来总结“当下”如何按照Android的设计标准去滑动导航菜单，我为什么说的“当下”呢？因为这个设计标准是会变的。
+<ul>
+<li>滑动导航菜单需要在Actionbar(Toolbar)下面，这在Android 4.X时代是比较常见的设计，也是当时Android Design标准设计。<br />
+###实现步骤：</li>
+</ul>
+</li>
+<li>因为<code>NavigationView</code>在Design库中，需要添加依赖：<code>compile 'com.android.support:design:24.0.0'</code></li>
+<li>在DrawLayout 中添加 NavigationView:</li>
+<li>布局：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v4.widget.DrawerLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    android:id=<span class="string">"@+id/drawerlayout"</span></span><br><span class="line">    android:fitsSystemWindows=<span class="string">"true"</span>&gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:id=<span class="string">"@+id/ll_main"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">        android:orientation=<span class="string">"vertical"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=<span class="string">"@+id/toolbar"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">            android:background=<span class="string">"@color/colorPrimary"</span></span><br><span class="line">            app:popupTheme=<span class="string">"@style/ThemeOverlay.AppCompat.Light"</span></span><br><span class="line">            app:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.NavigationView</span><br><span class="line">        android:id=<span class="string">"@+id/navigationView"</span></span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_gravity=<span class="string">"start"</span></span><br><span class="line">        app:headerLayout=<span class="string">"@layout/nv_header"</span></span><br><span class="line">        app:menu=<span class="string">"@menu/main_drawer"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.v4.widget.DrawerLayout&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>因为属于DrawLayout的导航菜单布局，所以NavigationView要加上<code>android:layout_gravity=&quot;start&quot;</code>代表从左面滑动，反之是&quot;end&quot;。</li>
+<li>其中<code>app:headerLayout=&quot;@layout/nv_header&quot;</code>需要传入一个导航菜单的头部布局，它的作用如图绿框部分。。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头部布局代码</span></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;LinearLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    android:orientation=<span class="string">"vertical"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"180dp"</span></span><br><span class="line">    android:background=<span class="string">"@drawable/background_material"</span></span><br><span class="line">    android:gravity=<span class="string">"bottom"</span></span><br><span class="line">    android:padding=<span class="string">"16dp"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_marginTop=<span class="string">"8dp"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"0dp"</span></span><br><span class="line">        android:layout_weight=<span class="string">"1"</span></span><br><span class="line">        android:gravity=<span class="string">"center_vertical"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=<span class="string">"@+id/profile_image"</span></span><br><span class="line">            android:layout_width=<span class="string">"76dp"</span></span><br><span class="line">            android:layout_height=<span class="string">"76dp"</span></span><br><span class="line">            android:background=<span class="string">"@drawable/z"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:text=<span class="string">"xlucifer"</span></span><br><span class="line">        android:textSize=<span class="string">"14sp"</span></span><br><span class="line">        android:textColor=<span class="string">"#fff"</span></span><br><span class="line">        android:textStyle=<span class="string">"bold"</span></span><br><span class="line">        android:paddingBottom=<span class="string">"4dp"</span></span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:text=<span class="string">"1234567890"</span></span><br><span class="line">        android:textSize=<span class="string">"14sp"</span></span><br><span class="line">        android:textColor=<span class="string">"#fff"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>app:menu=&quot;@menu/main_drawer&quot;</code>用于设置导航菜单中的菜单部分。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;menu xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span><br><span class="line">&lt;group&gt;</span><br><span class="line">    &lt;item android:id=<span class="string">"@+id/navigation_item1"</span></span><br><span class="line">        android:checkable=<span class="string">"true"</span></span><br><span class="line">        android:title=<span class="string">"First"</span></span><br><span class="line">        android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line">    &lt;item android:id=<span class="string">"@+id/navigation_item2"</span></span><br><span class="line">        android:checkable=<span class="string">"true"</span></span><br><span class="line">        android:title=<span class="string">"Second"</span></span><br><span class="line">        android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line">    &lt;item android:id=<span class="string">"@+id/navigation_item3"</span></span><br><span class="line">        android:checkable=<span class="string">"true"</span></span><br><span class="line">        android:title=<span class="string">"Third"</span></span><br><span class="line">        android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line">    &lt;item android:id=<span class="string">"@+id/navigation_item4"</span></span><br><span class="line">        android:checkable=<span class="string">"true"</span></span><br><span class="line">        android:title=<span class="string">"Fourth"</span></span><br><span class="line">        android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;item android:id=<span class="string">"@+id/navigation_sub"</span></span><br><span class="line">        android:title=<span class="string">"其他"</span>&gt;</span><br><span class="line">        &lt;menu&gt;</span><br><span class="line">            &lt;item android:id=<span class="string">"@+id/navigation_sub_item1"</span></span><br><span class="line">                android:checkable=<span class="string">"true"</span></span><br><span class="line">                android:title=<span class="string">"Fifth"</span></span><br><span class="line">                android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line">            &lt;item android:id=<span class="string">"@+id/navigation_sub_item2"</span></span><br><span class="line">                android:checkable=<span class="string">"true"</span></span><br><span class="line">                android:title=<span class="string">"Sixth"</span></span><br><span class="line">                android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line">            &lt;item android:id=<span class="string">"@+id/navigation_sub_item3"</span></span><br><span class="line">                android:checkable=<span class="string">"true"</span></span><br><span class="line">                android:title=<span class="string">"Seventh"</span></span><br><span class="line">                android:icon=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</span><br><span class="line">        &lt;/menu&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">&lt;/group&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后是java中代码实现：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NavigationViewActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> DrawerLayout drawerLayout;</span><br><span class="line">    <span class="keyword">private</span> Toolbar toolbar;</span><br><span class="line">    <span class="keyword">private</span> NavigationView navigationView;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.drawlayout_activity);</span><br><span class="line">        <span class="keyword">if</span>(Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT)&#123;</span><br><span class="line">            <span class="comment">//透明状态栏</span></span><br><span class="line">            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">        &#125;</span><br><span class="line">        setSupportActionBar(toolbar=(Toolbar)findViewById(R.id.toolbar));</span><br><span class="line">        drawerLayout=(DrawerLayout)findViewById(R.id.drawerlayout);</span><br><span class="line">        navigationView=(NavigationView)findViewById(R.id.navigationView);</span><br><span class="line"></span><br><span class="line">        ActionBarDrawerToggle actionBarDrawerToggle = <span class="keyword">new</span> ActionBarDrawerToggle(<span class="keyword">this</span>, drawerLayout, toolbar, R.string.open, R.string.close);</span><br><span class="line">        actionBarDrawerToggle.syncState();</span><br><span class="line">        drawerLayout.addDrawerListener(actionBarDrawerToggle);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//navigationView menu点击监听</span></span><br><span class="line">        navigationView.setNavigationItemSelectedListener(<span class="keyword">new</span> NavigationView.OnNavigationItemSelectedListener()&#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onNavigationItemSelected</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</span><br><span class="line">                selectDrawerItem(menuItem);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">selectDrawerItem</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (menuItem.getItemId())&#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                Toast.makeText(NavigationViewActivity.<span class="keyword">this</span>, <span class="string">"menu click"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        menuItem.setChecked(<span class="keyword">true</span>);</span><br><span class="line">        drawerLayout.closeDrawers();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中下面代码和布局代码中的<code>android:fitsSystemWindows=&quot;true&quot;</code>起到一个半透明状态栏的作用，半透明状态栏效果有各种实现方式，google也没能给一个好的实现方式，后续可能会考虑写一个全面的了解透明状态效果的文章</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT)&#123;</span><br><span class="line">    <span class="comment">//透明状态栏</span></span><br><span class="line">    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://tech.noexception.cn/2016/08/22/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95/" title="滑动菜单" target="_blank" rel="external">http://tech.noexception.cn/2016/08/22/滑动菜单/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/lancediarmuid" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/lancediarmuid" target="_blank"><span class="text-dark">希川</span><small class="ml-1x">Engineer</small></a></h3>
+        <div>格物致知。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2016/08/22/%E7%94%A8SSH%E5%AE%9E%E7%8E%B0%E6%97%A0%E5%AF%86%E7%A0%81%E8%87%AA%E5%8A%A8%E7%99%BB%E9%99%86/" title="用SSH实现无密码自动登陆"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2016/08/22/First/" title="Android Studio NDK的配置"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/lancediarmuid" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/lvtao0626" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:tech.noexception.cn ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'V7d6fP5h6cz6uFhx1RTYt0Sh-gzGzoHsz',
+    appKey: 'zjOMjmE2TF5HUOmKNqX50H7B',
+    placeholder: 'Just go go',
+    avatar: 'mp',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

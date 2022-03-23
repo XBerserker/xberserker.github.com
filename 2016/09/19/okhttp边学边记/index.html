@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>okhttp边学边记 | Noexception</title>
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;学习安卓一定离不开网络访问，但是官方已经不推荐使用HttpClient了，我们需要一个好用的网络库，这时，就想到了okhttp。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="okhttp边学边记">
+<meta property="og:url" content="http://tech.noexception.cn/2016/09/19/okhttp%E8%BE%B9%E5%AD%A6%E8%BE%B9%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Notes ❤ Ultimate">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;学习安卓一定离不开网络访问，但是官方已经不推荐使用HttpClient了，我们需要一个好用的网络库，这时，就想到了okhttp。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-18T16:28:38.000Z">
+<meta property="article:modified_time" content="2021-12-23T09:08:48.886Z">
+<meta property="article:author" content="希川">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://tech.noexception.cn/2016/09/19/okhttp%E8%BE%B9%E5%AD%A6%E8%BE%B9%E8%AE%B0/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Notes ❤ Ultimate" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/lancediarmuid" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">希川</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Guangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form" method="GET" action="https://www.baidu.com/s?">
+	<div class="input-group">
+    	<input name="wd" type="text" class="form-control search-form-input" placeholder="搜索" />
+	    <span class="input-group-btn">
+	    	<button type="submit" class=" btn btn-flat search-form-submit"><i class="icon icon-search"></i></button>
+	    </span>
+    </div>
+</form>
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/lancediarmuid" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/lvtao0626" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Cpp读书笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Web/">Python Web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python-Web/Flask/">Flask</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%B1%E8%AF%AD/">英语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS/" rel="tag">ARTS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-%E6%89%93%E5%8D%A1/" rel="tag">ARTS 打卡</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS7/" rel="tag">CentOS7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MathJax/" rel="tag">MathJax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%BC%80%E5%8F%91/" rel="tag">Web开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/" rel="tag">activity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reports/" rel="tag">reports</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/view/" rel="tag">view</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E5%8F%B7/" rel="tag">信号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag">容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" rel="tag">小目标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC/" rel="tag">左值、右值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="tag">年度总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8D%A1/" rel="tag">打卡</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/" rel="tag">持续更新中</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" rel="tag">新年计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E7%A7%AF%E7%AC%94%E8%AE%B0/" rel="tag">日积笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87/" rel="tag">目标</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%97%A7%E8%B4%A6/" rel="tag">算旧账</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" rel="tag">系统管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%A6%E6%9D%9F/" rel="tag">约束</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1/" rel="tag">缓存设计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%8C%E5%8C%85/" rel="tag">背包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E5%88%92/" rel="tag">规划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E5%9B%BE/" rel="tag">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/" rel="tag">触发器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E5%88%92/" rel="tag">计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ARTS/" style="font-size: 13.75px;">ARTS</a> <a href="/tags/ARTS-%E6%89%93%E5%8D%A1/" style="font-size: 13px;">ARTS 打卡</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/CentOS7/" style="font-size: 13px;">CentOS7</a> <a href="/tags/Error/" style="font-size: 13px;">Error</a> <a href="/tags/Flask/" style="font-size: 13px;">Flask</a> <a href="/tags/MathJax/" style="font-size: 13px;">MathJax</a> <a href="/tags/Mysql/" style="font-size: 13.25px;">Mysql</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Web%E5%BC%80%E5%8F%91/" style="font-size: 13px;">Web开发</a> <a href="/tags/activity/" style="font-size: 13px;">activity</a> <a href="/tags/css/" style="font-size: 13px;">css</a> <a href="/tags/docker/" style="font-size: 13px;">docker</a> <a href="/tags/reports/" style="font-size: 13.25px;">reports</a> <a href="/tags/ssh/" style="font-size: 13px;">ssh</a> <a href="/tags/view/" style="font-size: 13.25px;">view</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 13px;">中间件</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 13px;">事务</a> <a href="/tags/%E4%BF%A1%E5%8F%B7/" style="font-size: 13px;">信号</a> <a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size: 13px;">容器</a> <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87/" style="font-size: 13px;">小目标</a> <a href="/tags/%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC/" style="font-size: 13px;">左值、右值</a> <a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 13px;">年度总结</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.25px;">总结</a> <a href="/tags/%E6%89%93%E5%8D%A1/" style="font-size: 14px;">打卡</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/" style="font-size: 13px;">持续更新中</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 13px;">指针</a> <a href="/tags/%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/" style="font-size: 13px;">新年计划</a> <a href="/tags/%E6%97%A5%E7%A7%AF%E7%AC%94%E8%AE%B0/" style="font-size: 13px;">日积笔记</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 13px;">日记</a> <a href="/tags/%E6%A0%88/" style="font-size: 13px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87/" style="font-size: 13px;">目标</a> <a href="/tags/%E7%AE%97%E6%97%A7%E8%B4%A6/" style="font-size: 13px;">算旧账</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" style="font-size: 13px;">系统管理</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 13px;">索引</a> <a href="/tags/%E7%BA%A6%E6%9D%9F/" style="font-size: 13px;">约束</a> <a href="/tags/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1/" style="font-size: 13px;">缓存设计</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 13px;">背包</a> <a href="/tags/%E8%A7%84%E5%88%92/" style="font-size: 13px;">规划</a> <a href="/tags/%E8%A7%86%E5%9B%BE/" style="font-size: 13px;">视图</a> <a href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/" style="font-size: 13px;">触发器</a> <a href="/tags/%E8%AE%A1%E5%88%92/" style="font-size: 13px;">计划</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 13px;">队列</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/17/2022-new-page/" class="title">2022 新年计划</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-17T06:54:46.000Z" itemprop="datePublished">2022-01-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/15/sign-20211215/" class="title">每日总结打卡-2021/12/15</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-15T15:28:30.000Z" itemprop="datePublished">2021-12-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/12/cache/" class="title">缓存框架设计思路</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T16:15:06.000Z" itemprop="datePublished">2021-12-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/10/sign-1210/" class="title">每日总结打卡-2021/12/10</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-10T15:59:47.000Z" itemprop="datePublished">2021-12-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/27/202111summary/" class="title">2021年的第一篇总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-27T14:00:46.000Z" itemprop="datePublished">2021-11-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-导包"><span class="toc-number">1.</span> <span class="toc-text"> 一、导包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-使用步骤"><span class="toc-number">2.</span> <span class="toc-text"> 二、使用步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-封装"><span class="toc-number">3.</span> <span class="toc-text"> 三、封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-整合gson"><span class="toc-number">4.</span> <span class="toc-text"> 四、整合Gson</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-okhttp边学边记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      okhttp边学边记
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/09/19/okhttp%E8%BE%B9%E5%AD%A6%E8%BE%B9%E8%AE%B0/" class="article-date">
+	  <time datetime="2016-09-18T16:28:38.000Z" itemprop="datePublished">2016-09-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/09/19/okhttp%E8%BE%B9%E5%AD%A6%E8%BE%B9%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学习安卓一定离不开网络访问，但是官方已经不推荐使用HttpClient了，我们需要一个好用的网络库，这时，就想到了okhttp。</p>
+<a id="more"></a>
+<h2 id="一-导包"><a class="markdownIt-Anchor" href="#一-导包"></a> 一、导包</h2>
+<ul>
+<li>对于Android Studio的用户：<code>compile 'com.squareup.okhttp3:okhttp:(insert latest version)'</code>(目前的最新版本是3.4.1)</li>
+<li>对于Eclipse的用户：可以直接下载<a href="https://search.maven.org/remote_content?g=com.squareup.okhttp3&a=okhttp&v=LATEST" target="_blank" rel="noopener">[the lastest JAR]</a>,导入项目中即可。</li>
+<li>注意：官方文档里说到，“当使用到快速I/O和resizable buffers的时候需要<a href="https://github.com/square/okio" target="_blank">okio</a>”所以，还有一步：
+<ul>
+<li>对于Android Studio的用户：<code>compile 'com.squareup.okio:okio:(insert latest version)'</code>(目前的最新版本是1.10.0)</li>
+<li>对于Eclipse的用户：下载最近的<a href="https://search.maven.org/remote_content?g=com.squareup.okio&a=okio&v=LATEST" target="_blank" rel="noopener"> [ the lastest JAR ]</a> 即可</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-使用步骤"><a class="markdownIt-Anchor" href="#二-使用步骤"></a> 二、使用步骤：</h2>
+<ol>
+<li>HttpGet</li>
+</ol>
+<pre><code>- 首先从最常用到的http get请求开始，例子：
+- ```java
+    //创建okHttp对象
+    OkHttpClient client = new OkHttpClient();
+    //创建一个Request
+    final Request request = new Request.Builder().url(&quot;http://luciferlv.tech&quot;).build();
+    //new call
+    Call call = client.newCall(request);
+    //请求加入调度
+    call.enqueue(new CallBack(){
+            @Override
+            public void onFailure(Request request, IOException e){
+
+            }
+
+            @Override
+            public void onResponse(final Response response) throws IOException{
+                //String htmlStr = response.body().string();
+            }
+        })
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- 代码分析：</span><br><span class="line">  1. 发送一个get请求的步骤：首先构造一个Request对象，参数起码有一个url，也可以通过Request.Builder来设置更多的参数如：&#96;header和method&#96;等。</span><br><span class="line">  2. 然后通过request的对象去构造得到一个Call对象，类似于将你的请求封装成了任务，既然是任务，就会有&#96;execute()&#96;和&#96;cancel()&#96;等方法。</span><br><span class="line">  3. 最后，我们希望以**异步**的方式去执行请求，所以我们调用的是&#96;call.enqueue&#96;，将call加入调度队列，然后等待任务执行完成，我们在CallBack中即可得到结果。</span><br><span class="line">  - **注意：**</span><br><span class="line">    - &#96;onResponse&#96;回调的参数是response，一般情况下，比如我们希望获得返回的字符串，可以通过&#96;response.body().string()&#96;获取；如果希望获得返回的二进制字节数组，则调用&#96;response.body().bytes();&#96;如果想拿到返回的inputStream，则调用&#96;response.body().byteStream();&#96;，我们能拿到&#96;inputStream&#96;就可以通过IO的方式下载大文件（写文件）。</span><br><span class="line">    - 还有一个问题&#96;onResponse&#96;执行的线程并不是UI线程。如果希望操作控件，还是需要用到handler等。如：</span><br><span class="line">    - &#96;&#96;&#96;java</span><br><span class="line">        @Override</span><br><span class="line">        public void onResponse(final Response response) throws IOException&#123;</span><br><span class="line">            final String res &#x3D; response.body().string();</span><br><span class="line">            runOnUiThread(new Runnable()&#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void run()&#123;</span><br><span class="line">                    mTextView.setText(res);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+    - 我们这里是异步的方式去执行，当然也支持阻塞的方式，上面也说了Call有一个`execute()`方法，你也可以直接调用`call.execute()`通过返回一个`Response`。
+</code></pre>
+<ol start="2">
+<li>HttpPost携带参数</li>
+</ol>
+<pre><code>- 当请求需要提交参数的时候，我们就会用到post请求，和Get不同的就是Request构造的不同
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Request request = buildMultipartFormRequest(url, <span class="keyword">new</span> File[]&#123;file&#125;, <span class="keyword">new</span> String[]&#123;fileKey&#125;, <span class="keyword">null</span>);</span><br><span class="line">FormEncodingBuilder builder = <span class="keyword">new</span> FormEncodingBuilder();</span><br><span class="line">builder.add(<span class="string">"username"</span>, <span class="string">"Lucifer"</span>);</span><br><span class="line"></span><br><span class="line">Request request = <span class="keyword">new</span> Request.Builder.url(url).post(builder.build()).build();</span><br><span class="line">client.newCall(request).enqueue(<span class="keyword">new</span> CallBack()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">final</span> Response response)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+- 大家都清除，post的矢耦，参数是包含在请求体中的；所以我们通过FormEncodingBuilder。添加多个String键值对，然后去构造RequestBody，最后完成我们Request的构造。后面的就和上面的是一样的了。
+</code></pre>
+<ol start="3">
+<li>基于http的文件上传</li>
+</ol>
+<pre><code>- 接下来我们再介绍一个可以构造RequestBody的Builder，叫做`MultipartBuilder`。当我们需要做类似与表单上传的时候，就可以用它来构造我们的requestBody。
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"balabala.mp4"</span>);</span><br><span class="line"></span><br><span class="line">RequestBody fileBody = RequestBody.create(MediaType.parse(<span class="string">"application/octet-stream"</span>), file);</span><br><span class="line"></span><br><span class="line">RequestBody requestBody = <span class="keyword">new</span> MultipartBuilder()</span><br><span class="line">      .type(MultipartBuilder.FORM)</span><br><span class="line">      .addPart(Headers.of(<span class="string">"Content-Dispostion"</span>, <span class="string">"form-data; name=\"username\""</span>), RequestBody.create(<span class="keyword">null</span>, <span class="string">"Lucifer"</span>))</span><br><span class="line">      .addPart(Heafers.of(<span class="string">"Content-Dispostion"</span>, <span class="string">"form-data; name=\"mFile\"; fileName=\"wjd.mp4\""</span>), fileBody)</span><br><span class="line">      .build();</span><br><span class="line"></span><br><span class="line">Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">    .url(<span class="string">"http://192.168.1.103:8080/okHttpServer/fileUpload"</span>)</span><br><span class="line">    .post(requestBody)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">Call call = client.newCall(request);</span><br><span class="line">call.enqueue(<span class="keyword">new</span> CallBack()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">final</span> Response response)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+- 上述代码向服务器传递了一个键值对`username: Lucifer`和一个文件。我们通过MultipartBuilder的addPart()方法可以添加键值对或者文件。
+- 其实类似于我们拼接浏览器行为的方式
+- **图片下载：**通过回调的Response拿到byte[]然后decode成图片；
+- **文件下载：**通过拿到inputStream做写文件操作。
+</code></pre>
+<h2 id="三-封装"><a class="markdownIt-Anchor" href="#三-封装"></a> 三、封装</h2>
+<ul>
+<li>由于按照上述的代码，请求多了重复的代码就多了，我们就希望封装这些代码</li>
+</ul>
+<ol>
+<li>使用：</li>
+<li>一般的get请求</li>
+</ol>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClientManager.getAsyn(<span class="string">"https://www.baidu.com"</span>, <span class="keyword">new</span> OkHttpClientManager.ResultCallBack&lt;String&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Request request, Exception e)</span></span>&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(String u)</span></span>&#123;</span><br><span class="line">        mTextView.setText(u);<span class="comment">//这里是UI线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+- 对于一把的请求，我们希望给个url，然后CallBack里面直接操作控件。
+2. 文件上传且携带参数
+  - 我们希望提供一个方法，传入url, params, file, callback即可。
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClientManager.postAsyn(<span class="string">"http://192.168.1.103:8080/okHttpServer/fileUpload"</span>, <span class="comment">//参数1</span></span><br><span class="line">    <span class="keyword">new</span> OkHttpClientManager.ResultCallBack&lt;String&gt;()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Request request, IOException e)</span></span>&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(String result)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="comment">//参数2</span></span><br><span class="line">    file, <span class="comment">//参数3</span></span><br><span class="line">    <span class="string">"mFile"</span>,<span class="comment">//参数4</span></span><br><span class="line">    <span class="keyword">new</span> OkHttpClientManager.Param[]&#123;</span><br><span class="line">        <span class="keyword">new</span> OkHttpClientManager.param(<span class="string">"username"</span>, <span class="string">"lt"</span>),</span><br><span class="line">        <span class="keyword">new</span> OkHttpClientManager.param(<span class="string">"password"</span>, <span class="string">"123"</span>)</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+  - 参数3为file，参数4为file对应的name，这个name不是文件的名字；
+  - 对应于http中的`&lt;input type=&quot;file&quot; name=&quot;mFile&quot; &gt;`
+  - 对应的是name后面的值，即mFile。
+3. 文件下载
+  - 对于文件下载，提供url，目标dir，callback即可。
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClientManager.downloadAsyn(<span class="string">"http://192.168.1.103:8080/okHttpServer/files/message_01.png"</span>,<span class="comment">//</span></span><br><span class="line">    Environment.getExternalStorageDirectory().getAbsolutePath(),<span class="comment">//</span></span><br><span class="line">    <span class="keyword">new</span> OkHttpClientManager.ResultCallBack&lt;String&gt;()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Request request, IOException e)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(String response)</span></span>&#123;</span><br><span class="line">            <span class="comment">//文件下载成功，这里回调的response为文件的absolutePath</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+4. 展示图片
+  - 展示图片，我们希望提供一个url和一个imageView，如果下载成功，直接帮我们设置上即可。
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClientManager.displayImage(mImageView, <span class="string">"http://192.168.1.103:8080/20150817/1.jpg"</span>);</span><br></pre></td></tr></table></figure>
+  - 内部会自动根据imageView的大小自动对图片进行合适的压缩。虽然，这里可能不适合一次性加载大量图片的场景，但是对于app中偶尔有几个图片的加载，还是可用的。
+</code></pre>
+<h2 id="四-整合gson"><a class="markdownIt-Anchor" href="#四-整合gson"></a> 四、整合Gson</h2>
+<ul>
+<li>项目中使用时，服务端返回的是Json字符串，希望客户端回调可以直接拿到对象，于是整合进入Gson。</li>
+</ul>
+<ol>
+<li>直接回调对象</li>
+</ol>
+<pre><code>- 例如现在有个User实体类：
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String username;</span><br><span class="line">    <span class="keyword">public</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, String password)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span>+</span><br><span class="line">                <span class="string">"username='"</span> + username + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">",password='"</span> + password + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+- 服务端返回：``{&quot;username&quot;:&quot;lt&quot;, &quot;password&quot;:&quot;123&quot;}``
+- 客户端可以如下方式的调用：
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClientManager.getAsyn(<span class="string">"http://192.168.56.1:8080/okHttpServer/user!getUser"</span>,</span><br><span class="line">    <span class="keyword">new</span> OkHttpClientManager.ResultCallBack&lt;User&gt;()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Request request, Exception e)</span></span>&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">            mTextView.setText(user.toString());<span class="comment">//UI线程</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+- 我们传入泛型User，在onResponse里面直接回调User对象。
+- **注意：**如果在`json字符串-&gt;实体对象`过程中发生错误，程序不会崩溃，`onError`方法会被回调。
+</code></pre>
+<ol start="2">
+<li>回调对象集合</li>
+</ol>
+<pre><code>- 依然是上述的User类，服务端返回
+  - ``[{&quot;username&quot;:&quot;lt&quot;,&quot;password&quot;:&quot;123&quot;},{&quot;username&quot;:&quot;chl&quot;,&quot;password&quot;:&quot;12345&quot;}]``
+- 则客户端可以如下调用：
+  - ```java
+      OkHttpClientManager.getAsyn(&quot;http://192.168.56.1:8080/okHttpServer/user!getUsers&quot;,//
+          new OkHttpClientManager.ResultCallBack&lt;List&lt;User&gt;&gt;(){
+              @Override
+              public void onError(Request request, Exception e){
+                  e.printStackTrace();
+              }
+
+              @Override
+              public void onResponse(List&lt;User&gt; us){
+                  Log.e(&quot;TAG&quot;, us.size() + &quot; &quot;);
+                  mTextView.setText(us.get(1).toString());
+              }
+          });
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br></pre></td><td class="code"><pre><span class="line">      - 唯一的区别，就是泛型变成了&#96;List&lt;User&gt;&#96;。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### OkHttpClientManager的源码</span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">public class OkHttpClientManager</span><br><span class="line">&#123;</span><br><span class="line">    private static OkHttpClientManager mInstance;</span><br><span class="line">    private OkHttpClient mOkHttpClient;</span><br><span class="line">    private Handler mDelivery;</span><br><span class="line">    private Gson mGson;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private static final String TAG &#x3D; &quot;OkHttpClientManager&quot;;</span><br><span class="line"></span><br><span class="line">    private OkHttpClientManager()</span><br><span class="line">    &#123;</span><br><span class="line">        mOkHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">        &#x2F;&#x2F;cookie enabled</span><br><span class="line">        mOkHttpClient.setCookieHandler(new CookieManager(null, CookiePolicy.ACCEPT_ORIGINAL_SERVER));</span><br><span class="line">        mDelivery &#x3D; new Handler(Looper.getMainLooper());</span><br><span class="line">        mGson &#x3D; new Gson();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static OkHttpClientManager getInstance()</span><br><span class="line">    &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            synchronized (OkHttpClientManager.class)</span><br><span class="line">            &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null)</span><br><span class="line">                &#123;</span><br><span class="line">                    mInstance &#x3D; new OkHttpClientManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 同步的Get请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @return Response</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private Response _getAsyn(String url) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        final Request request &#x3D; new Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .build();</span><br><span class="line">        Call call &#x3D; mOkHttpClient.newCall(request);</span><br><span class="line">        Response execute &#x3D; call.execute();</span><br><span class="line">        return execute;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 同步的Get请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @return 字符串</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private String _getAsString(String url) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Response execute &#x3D; _getAsyn(url);</span><br><span class="line">        return execute.body().string();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步的get请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param callback</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _getAsyn(String url, final ResultCallback callback)</span><br><span class="line">    &#123;</span><br><span class="line">        final Request request &#x3D; new Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .build();</span><br><span class="line">        deliveryResult(callback, request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 同步的Post请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param params post的参数</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private Response _post(String url, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildPostRequest(url, params);</span><br><span class="line">        Response response &#x3D; mOkHttpClient.newCall(request).execute();</span><br><span class="line">        return response;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 同步的Post请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param params post的参数</span><br><span class="line">     * @return 字符串</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private String _postAsString(String url, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Response response &#x3D; _post(url, params);</span><br><span class="line">        return response.body().string();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步的post请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param callback</span><br><span class="line">     * @param params</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _postAsyn(String url, final ResultCallback callback, Param... params)</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildPostRequest(url, params);</span><br><span class="line">        deliveryResult(callback, request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步的post请求</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param callback</span><br><span class="line">     * @param params</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _postAsyn(String url, final ResultCallback callback, Map&lt;String, String&gt; params)</span><br><span class="line">    &#123;</span><br><span class="line">        Param[] paramsArr &#x3D; map2Params(params);</span><br><span class="line">        Request request &#x3D; buildPostRequest(url, paramsArr);</span><br><span class="line">        deliveryResult(callback, request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 同步基于post的文件上传</span><br><span class="line">     *</span><br><span class="line">     * @param params</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private Response _post(String url, File[] files, String[] fileKeys, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildMultipartFormRequest(url, files, fileKeys, params);</span><br><span class="line">        return mOkHttpClient.newCall(request).execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Response _post(String url, File file, String fileKey) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildMultipartFormRequest(url, new File[]&#123;file&#125;, new String[]&#123;fileKey&#125;, null);</span><br><span class="line">        return mOkHttpClient.newCall(request).execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Response _post(String url, File file, String fileKey, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildMultipartFormRequest(url, new File[]&#123;file&#125;, new String[]&#123;fileKey&#125;, params);</span><br><span class="line">        return mOkHttpClient.newCall(request).execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步基于post的文件上传</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param callback</span><br><span class="line">     * @param files</span><br><span class="line">     * @param fileKeys</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _postAsyn(String url, ResultCallback callback, File[] files, String[] fileKeys, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildMultipartFormRequest(url, files, fileKeys, params);</span><br><span class="line">        deliveryResult(callback, request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步基于post的文件上传，单文件不带参数上传</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param callback</span><br><span class="line">     * @param file</span><br><span class="line">     * @param fileKey</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _postAsyn(String url, ResultCallback callback, File file, String fileKey) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildMultipartFormRequest(url, new File[]&#123;file&#125;, new String[]&#123;fileKey&#125;, null);</span><br><span class="line">        deliveryResult(callback, request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步基于post的文件上传，单文件且携带其他form参数上传</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param callback</span><br><span class="line">     * @param file</span><br><span class="line">     * @param fileKey</span><br><span class="line">     * @param params</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _postAsyn(String url, ResultCallback callback, File file, String fileKey, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        Request request &#x3D; buildMultipartFormRequest(url, new File[]&#123;file&#125;, new String[]&#123;fileKey&#125;, params);</span><br><span class="line">        deliveryResult(callback, request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 异步下载文件</span><br><span class="line">     *</span><br><span class="line">     * @param url</span><br><span class="line">     * @param destFileDir 本地文件存储的文件夹</span><br><span class="line">     * @param callback</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _downloadAsyn(final String url, final String destFileDir, final ResultCallback callback)</span><br><span class="line">    &#123;</span><br><span class="line">        final Request request &#x3D; new Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .build();</span><br><span class="line">        final Call call &#x3D; mOkHttpClient.newCall(request);</span><br><span class="line">        call.enqueue(new Callback()</span><br><span class="line">        &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onFailure(final Request request, final IOException e)</span><br><span class="line">            &#123;</span><br><span class="line">                sendFailedStringCallback(request, e, callback);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(Response response)</span><br><span class="line">            &#123;</span><br><span class="line">                InputStream is &#x3D; null;</span><br><span class="line">                byte[] buf &#x3D; new byte[2048];</span><br><span class="line">                int len &#x3D; 0;</span><br><span class="line">                FileOutputStream fos &#x3D; null;</span><br><span class="line">                try</span><br><span class="line">                &#123;</span><br><span class="line">                    is &#x3D; response.body().byteStream();</span><br><span class="line">                    File file &#x3D; new File(destFileDir, getFileName(url));</span><br><span class="line">                    fos &#x3D; new FileOutputStream(file);</span><br><span class="line">                    while ((len &#x3D; is.read(buf)) !&#x3D; -1)</span><br><span class="line">                    &#123;</span><br><span class="line">                        fos.write(buf, 0, len);</span><br><span class="line">                    &#125;</span><br><span class="line">                    fos.flush();</span><br><span class="line">                    &#x2F;&#x2F;如果下载文件成功，第一个参数为文件的绝对路径</span><br><span class="line">                    sendSuccessResultCallback(file.getAbsolutePath(), callback);</span><br><span class="line">                &#125; catch (IOException e)</span><br><span class="line">                &#123;</span><br><span class="line">                    sendFailedStringCallback(response.request(), e, callback);</span><br><span class="line">                &#125; finally</span><br><span class="line">                &#123;</span><br><span class="line">                    try</span><br><span class="line">                    &#123;</span><br><span class="line">                        if (is !&#x3D; null) is.close();</span><br><span class="line">                    &#125; catch (IOException e)</span><br><span class="line">                    &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                    try</span><br><span class="line">                    &#123;</span><br><span class="line">                        if (fos !&#x3D; null) fos.close();</span><br><span class="line">                    &#125; catch (IOException e)</span><br><span class="line">                    &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String getFileName(String path)</span><br><span class="line">    &#123;</span><br><span class="line">        int separatorIndex &#x3D; path.lastIndexOf(&quot;&#x2F;&quot;);</span><br><span class="line">        return (separatorIndex &lt; 0) ? path : path.substring(separatorIndex + 1, path.length());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 加载图片</span><br><span class="line">     *</span><br><span class="line">     * @param view</span><br><span class="line">     * @param url</span><br><span class="line">     * @throws IOException</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void _displayImage(final ImageView view, final String url, final int errorResId)</span><br><span class="line">    &#123;</span><br><span class="line">        final Request request &#x3D; new Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .build();</span><br><span class="line">        Call call &#x3D; mOkHttpClient.newCall(request);</span><br><span class="line">        call.enqueue(new Callback()</span><br><span class="line">        &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onFailure(Request request, IOException e)</span><br><span class="line">            &#123;</span><br><span class="line">                setErrorResId(view, errorResId);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(Response response)</span><br><span class="line">            &#123;</span><br><span class="line">                InputStream is &#x3D; null;</span><br><span class="line">                try</span><br><span class="line">                &#123;</span><br><span class="line">                    is &#x3D; response.body().byteStream();</span><br><span class="line">                    ImageUtils.ImageSize actualImageSize &#x3D; ImageUtils.getImageSize(is);</span><br><span class="line">                    ImageUtils.ImageSize imageViewSize &#x3D; ImageUtils.getImageViewSize(view);</span><br><span class="line">                    int inSampleSize &#x3D; ImageUtils.calculateInSampleSize(actualImageSize, imageViewSize);</span><br><span class="line">                    try</span><br><span class="line">                    &#123;</span><br><span class="line">                        is.reset();</span><br><span class="line">                    &#125; catch (IOException e)</span><br><span class="line">                    &#123;</span><br><span class="line">                        response &#x3D; _getAsyn(url);</span><br><span class="line">                        is &#x3D; response.body().byteStream();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    BitmapFactory.Options ops &#x3D; new BitmapFactory.Options();</span><br><span class="line">                    ops.inJustDecodeBounds &#x3D; false;</span><br><span class="line">                    ops.inSampleSize &#x3D; inSampleSize;</span><br><span class="line">                    final Bitmap bm &#x3D; BitmapFactory.decodeStream(is, null, ops);</span><br><span class="line">                    mDelivery.post(new Runnable()</span><br><span class="line">                    &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run()</span><br><span class="line">                        &#123;</span><br><span class="line">                            view.setImageBitmap(bm);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125; catch (Exception e)</span><br><span class="line">                &#123;</span><br><span class="line">                    setErrorResId(view, errorResId);</span><br><span class="line"></span><br><span class="line">                &#125; finally</span><br><span class="line">                &#123;</span><br><span class="line">                    if (is !&#x3D; null) try</span><br><span class="line">                    &#123;</span><br><span class="line">                        is.close();</span><br><span class="line">                    &#125; catch (IOException e)</span><br><span class="line">                    &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void setErrorResId(final ImageView view, final int errorResId)</span><br><span class="line">    &#123;</span><br><span class="line">        mDelivery.post(new Runnable()</span><br><span class="line">        &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run()</span><br><span class="line">            &#123;</span><br><span class="line">                view.setImageResource(errorResId);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;*************对外公布的方法************</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static Response getAsyn(String url) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._getAsyn(url);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static String getAsString(String url) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._getAsString(url);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void getAsyn(String url, ResultCallback callback)</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._getAsyn(url, callback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Response post(String url, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._post(url, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String postAsString(String url, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._postAsString(url, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void postAsyn(String url, final ResultCallback callback, Param... params)</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._postAsyn(url, callback, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void postAsyn(String url, final ResultCallback callback, Map&lt;String, String&gt; params)</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._postAsyn(url, callback, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static Response post(String url, File[] files, String[] fileKeys, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._post(url, files, fileKeys, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Response post(String url, File file, String fileKey) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._post(url, file, fileKey);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Response post(String url, File file, String fileKey, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        return getInstance()._post(url, file, fileKey, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void postAsyn(String url, ResultCallback callback, File[] files, String[] fileKeys, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._postAsyn(url, callback, files, fileKeys, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void postAsyn(String url, ResultCallback callback, File file, String fileKey) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._postAsyn(url, callback, file, fileKey);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void postAsyn(String url, ResultCallback callback, File file, String fileKey, Param... params) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._postAsyn(url, callback, file, fileKey, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void displayImage(final ImageView view, String url, int errorResId) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._displayImage(view, url, errorResId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void displayImage(final ImageView view, String url)</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._displayImage(view, url, -1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void downloadAsyn(String url, String destDir, ResultCallback callback)</span><br><span class="line">    &#123;</span><br><span class="line">        getInstance()._downloadAsyn(url, destDir, callback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;****************************</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private Request buildMultipartFormRequest(String url, File[] files,</span><br><span class="line">                                              String[] fileKeys, Param[] params)</span><br><span class="line">    &#123;</span><br><span class="line">        params &#x3D; validateParam(params);</span><br><span class="line"></span><br><span class="line">        MultipartBuilder builder &#x3D; new MultipartBuilder()</span><br><span class="line">                .type(MultipartBuilder.FORM);</span><br><span class="line"></span><br><span class="line">        for (Param param : params)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.addPart(Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name&#x3D;\&quot;&quot; + param.key + &quot;\&quot;&quot;),</span><br><span class="line">                    RequestBody.create(null, param.value));</span><br><span class="line">        &#125;</span><br><span class="line">        if (files !&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            RequestBody fileBody &#x3D; null;</span><br><span class="line">            for (int i &#x3D; 0; i &lt; files.length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                File file &#x3D; files[i];</span><br><span class="line">                String fileName &#x3D; file.getName();</span><br><span class="line">                fileBody &#x3D; RequestBody.create(MediaType.parse(guessMimeType(fileName)), file);</span><br><span class="line">                &#x2F;&#x2F;TODO 根据文件名设置contentType</span><br><span class="line">                builder.addPart(Headers.of(&quot;Content-Disposition&quot;,</span><br><span class="line">                                &quot;form-data; name&#x3D;\&quot;&quot; + fileKeys[i] + &quot;\&quot;; filename&#x3D;\&quot;&quot; + fileName + &quot;\&quot;&quot;),</span><br><span class="line">                        fileBody);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        RequestBody requestBody &#x3D; builder.build();</span><br><span class="line">        return new Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .post(requestBody)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String guessMimeType(String path)</span><br><span class="line">    &#123;</span><br><span class="line">        FileNameMap fileNameMap &#x3D; URLConnection.getFileNameMap();</span><br><span class="line">        String contentTypeFor &#x3D; fileNameMap.getContentTypeFor(path);</span><br><span class="line">        if (contentTypeFor &#x3D;&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            contentTypeFor &#x3D; &quot;application&#x2F;octet-stream&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return contentTypeFor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private Param[] validateParam(Param[] params)</span><br><span class="line">    &#123;</span><br><span class="line">        if (params &#x3D;&#x3D; null)</span><br><span class="line">            return new Param[0];</span><br><span class="line">        else return params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Param[] map2Params(Map&lt;String, String&gt; params)</span><br><span class="line">    &#123;</span><br><span class="line">        if (params &#x3D;&#x3D; null) return new Param[0];</span><br><span class="line">        int size &#x3D; params.size();</span><br><span class="line">        Param[] res &#x3D; new Param[size];</span><br><span class="line">        Set&lt;Map.Entry&lt;String, String&gt;&gt; entries &#x3D; params.entrySet();</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        for (Map.Entry&lt;String, String&gt; entry : entries)</span><br><span class="line">        &#123;</span><br><span class="line">            res[i++] &#x3D; new Param(entry.getKey(), entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static final String SESSION_KEY &#x3D; &quot;Set-Cookie&quot;;</span><br><span class="line">    private static final String mSessionKey &#x3D; &quot;JSESSIONID&quot;;</span><br><span class="line"></span><br><span class="line">    private Map&lt;String, String&gt; mSessions &#x3D; new HashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">    private void deliveryResult(final ResultCallback callback, Request request)</span><br><span class="line">    &#123;</span><br><span class="line">        mOkHttpClient.newCall(request).enqueue(new Callback()</span><br><span class="line">        &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onFailure(final Request request, final IOException e)</span><br><span class="line">            &#123;</span><br><span class="line">                sendFailedStringCallback(request, e, callback);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(final Response response)</span><br><span class="line">            &#123;</span><br><span class="line">                try</span><br><span class="line">                &#123;</span><br><span class="line">                    final String string &#x3D; response.body().string();</span><br><span class="line">                    if (callback.mType &#x3D;&#x3D; String.class)</span><br><span class="line">                    &#123;</span><br><span class="line">                        sendSuccessResultCallback(string, callback);</span><br><span class="line">                    &#125; else</span><br><span class="line">                    &#123;</span><br><span class="line">                        Object o &#x3D; mGson.fromJson(string, callback.mType);</span><br><span class="line">                        sendSuccessResultCallback(o, callback);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125; catch (IOException e)</span><br><span class="line">                &#123;</span><br><span class="line">                    sendFailedStringCallback(response.request(), e, callback);</span><br><span class="line">                &#125; catch (com.google.gson.JsonParseException e)&#x2F;&#x2F;Json解析的错误</span><br><span class="line">                &#123;</span><br><span class="line">                    sendFailedStringCallback(response.request(), e, callback);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void sendFailedStringCallback(final Request request, final Exception e, final ResultCallback callback)</span><br><span class="line">    &#123;</span><br><span class="line">        mDelivery.post(new Runnable()</span><br><span class="line">        &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run()</span><br><span class="line">            &#123;</span><br><span class="line">                if (callback !&#x3D; null)</span><br><span class="line">                    callback.onError(request, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void sendSuccessResultCallback(final Object object, final ResultCallback callback)</span><br><span class="line">    &#123;</span><br><span class="line">        mDelivery.post(new Runnable()</span><br><span class="line">        &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run()</span><br><span class="line">            &#123;</span><br><span class="line">                if (callback !&#x3D; null)</span><br><span class="line">                &#123;</span><br><span class="line">                    callback.onResponse(object);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Request buildPostRequest(String url, Param[] params)</span><br><span class="line">    &#123;</span><br><span class="line">        if (params &#x3D;&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            params &#x3D; new Param[0];</span><br><span class="line">        &#125;</span><br><span class="line">        FormEncodingBuilder builder &#x3D; new FormEncodingBuilder();</span><br><span class="line">        for (Param param : params)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.add(param.key, param.value);</span><br><span class="line">        &#125;</span><br><span class="line">        RequestBody requestBody &#x3D; builder.build();</span><br><span class="line">        return new Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .post(requestBody)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static abstract class ResultCallback&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Type mType;</span><br><span class="line"></span><br><span class="line">        public ResultCallback()</span><br><span class="line">        &#123;</span><br><span class="line">            mType &#x3D; getSuperclassTypeParameter(getClass());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        static Type getSuperclassTypeParameter(Class&lt;?&gt; subclass)</span><br><span class="line">        &#123;</span><br><span class="line">            Type superclass &#x3D; subclass.getGenericSuperclass();</span><br><span class="line">            if (superclass instanceof Class)</span><br><span class="line">            &#123;</span><br><span class="line">                throw new RuntimeException(&quot;Missing type parameter.&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            ParameterizedType parameterized &#x3D; (ParameterizedType) superclass;</span><br><span class="line">            return $Gson$Types.canonicalize(parameterized.getActualTypeArguments()[0]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public abstract void onError(Request request, Exception e);</span><br><span class="line"></span><br><span class="line">        public abstract void onResponse(T response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static class Param</span><br><span class="line">    &#123;</span><br><span class="line">        public Param()</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Param(String key, String value)</span><br><span class="line">        &#123;</span><br><span class="line">            this.key &#x3D; key;</span><br><span class="line">            this.value &#x3D; value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String key;</span><br><span class="line">        String value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<hr />
+<p>参考文献：</p>
+<ul>
+<li><a href="https://square.github.io/okhttp/" target="_blank">[okhttp官方文档]</a></li>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/23781773" target="_blank">[ 张鸿洋的博客——从原理角度解析Android （Java） http 文件上传 ]</a></li>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/47911083" target="_blank">[Android OkHttp完全解析]</a></li>
+<li><a href="https://square.github.io/okhttp/3.x/okhttp/" target="_blank">[OkHttp官方API文档]</a></li>
+<li><a href="https://github.com/square/okhttp/" target="_blank" rel="noopener">https://github.com/square/okhttp/</a></li>
+<li><a href="https://github.com/hongyangAndroid/okhttp-utils" target="_blank" rel="noopener">https://github.com/hongyangAndroid/okhttp-utils</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://tech.noexception.cn/2016/09/19/okhttp%E8%BE%B9%E5%AD%A6%E8%BE%B9%E8%AE%B0/" title="okhttp边学边记" target="_blank" rel="external">http://tech.noexception.cn/2016/09/19/okhttp边学边记/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/lancediarmuid" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/lancediarmuid" target="_blank"><span class="text-dark">希川</span><small class="ml-1x">Engineer</small></a></h3>
+        <div>格物致知。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2016/09/22/js%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="js的学习笔记——预备篇"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2016/09/17/Java%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java中的正则表达式"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/lancediarmuid" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/lvtao0626" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:tech.noexception.cn ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'V7d6fP5h6cz6uFhx1RTYt0Sh-gzGzoHsz',
+    appKey: 'zjOMjmE2TF5HUOmKNqX50H7B',
+    placeholder: 'Just go go',
+    avatar: 'mp',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
